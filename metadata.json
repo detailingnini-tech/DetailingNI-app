@@ -1,0 +1,8 @@
+{
+  "name": "Detailing NI",
+  "description": "Customer showcase app for Detailing NI in Newtownards. Ceramic coatings, precision valeting packages, before/after gallery & direct contact to book.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
