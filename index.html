@@ -2,151 +2,275 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apex Auto Studio | Premium Paint Correction & Ceramic Coatings</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://tailwindcss.com"></script>
-    <!-- Google Fonts: Montserrat for headings, Inter for body text -->
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+    <!-- Critical Viewport tag for Mobile-First Screen Scaling -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Apex Auto Studio | Mobile Portal</title>
     
     <style>
+        /* Mobile System Optimization Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: #0A0A0C;
+            color: #E5E7EB;
+            line-height: 1.5;
+            padding-top: 70px; /* Prevents fixed header from covering content */
         }
-        .heading-font {
-            font-family: 'Montserrat', sans-serif;
+
+        /* Styling Variables */
+        .accent-neon { color: #00E5FF; }
+        
+        /* Mobile Fixed Header Bar Layout */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background-color: rgba(10, 10, 12, 0.95);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 100;
         }
-        /* Custom Neon Blue Glow Effect */
-        .neon-glow {
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+        .logo {
+            font-weight: 900;
+            font-size: 18px;
+            letter-spacing: 0.05em;
+            color: #FFFFFF;
         }
-        .neon-text-glow {
-            text-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+
+        /* Touch-Friendly Action Buttons */
+        .btn-action {
+            background-color: #00E5FF;
+            color: #000000;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 4px;
+            display: inline-block;
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
         }
-        /* Custom Glassmorphism style */
-        .glass-card {
-            background: rgba(18, 18, 20, 0.7);
-            backdrop-filter: blur(12px);
+        .btn-full {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 16px;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+
+        /* Main Mobile Hero Area */
+        .mobile-hero {
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(180deg, rgba(13,13,17,1) 0%, rgba(10,10,12,1) 100%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        .tagline {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #00E5FF;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .mobile-hero h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #FFFFFF;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+        .mobile-hero p {
+            font-size: 15px;
+            color: #9CA3AF;
+            margin-bottom: 28px;
+            font-weight: 300;
+        }
+
+        /* Mobile Layout Container Blocks */
+        .content-panel {
+            padding: 48px 20px;
+        }
+        .panel-title {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .panel-title h2 {
+            font-size: 26px;
+            color: #FFFFFF;
+            text-transform: uppercase;
+        }
+        .panel-title p {
+            font-size: 13px;
+            color: #6B7280;
+            margin-top: 4px;
+        }
+
+        /* Vertical Package Component List Cards */
+        .package-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .package-card {
+            background-color: #121216;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            padding: 24px;
+            position: relative;
+        }
+        .featured {
+            border-color: rgba(0, 229, 255, 0.3);
+            background-color: #14191F;
+        }
+        .card-badge {
+            position: absolute;
+            top: -10px;
+            right: 16px;
+            background-color: #00E5FF;
+            color: #000000;
+            font-size: 9px;
+            font-weight: 800;
+            padding: 2px 10px;
+            border-radius: 10px;
+            text-transform: uppercase;
+        }
+        .package-card h3 {
+            font-size: 20px;
+            color: #FFFFFF;
+            margin-bottom: 8px;
+        }
+        .package-card p {
+            font-size: 13px;
+            color: #9CA3AF;
+            margin-bottom: 20px;
+        }
+        .package-price {
+            font-size: 22px;
+            font-weight: 800;
+            color: #FFFFFF;
+        }
+        .featured .package-price {
+            color: #00E5FF;
+        }
+
+        /* Native App Styling for Mobile Forms */
+        .mobile-form {
+            background-color: #121216;
+            padding: 24px;
+            border-radius: 6px;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
-        .glass-card:hover {
-            border-color: rgba(0, 229, 255, 0.3);
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 18px;
+        }
+        .form-field label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #9CA3AF;
+            margin-bottom: 6px;
+        }
+        .form-field input, .form-field select, .form-field textarea {
+            background-color: #0A0A0C;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 14px;
+            color: #FFFFFF;
+            border-radius: 4px;
+            font-size: 15px;
+            outline: none;
+        }
+        .form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+            border-color: #00E5FF;
         }
     </style>
 </head>
-<body class="text-gray-300 antialiased selection:bg-cyan-500 selection:text-black">
+<body>
 
-    <!-- Header Navigation -->
-    <header class="fixed top-0 w-full z-50 bg-[#0A0A0C]/80 backdrop-blur-md border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="heading-font text-xl font-black tracking-wider text-white">
-                APEX<span class="text-[#00E5FF] neon-text-glow">STUDIO</span>
-            </div>
-            <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-wide uppercase">
-                <a href="#services" class="hover:text-[#00E5FF] transition-colors">Services</a>
-                <a href="#transformation" class="hover:text-[#00E5FF] transition-colors">The Proof</a>
-                <a href="#about" class="hover:text-[#00E5FF] transition-colors">The Studio</a>
-            </nav>
-            <a href="#quote" class="bg-[#00E5FF] hover:bg-cyan-400 text-black font-semibold text-xs tracking-wider uppercase px-5 py-2.5 rounded-sm neon-glow transition-all">
-                Book Studio Time
-            </a>
-        </div>
+    <!-- Header Frame -->
+    <header>
+        <div class="logo">APEX<span class="accent-neon">STUDIO</span></div>
+        <a href="#intake" class="btn-action">Book Now</a>
     </header>
 
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-        <!-- Background Asset: Replace with a dark, cinematic looping MP4 video link or high-res image -->
-        <div class="absolute inset-0 bg-[url('https://unsplash.com')] bg-cover bg-center mix-blend-luminosity opacity-20"></div>
-        <!-- Linear dark gradients over image -->
-        <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0C] via-transparent to-[#0A0A0C]"></div>
-        
-        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
-            <span class="text-xs font-bold tracking-[0.3em] uppercase text-[#00E5FF] mb-4 block">Elite Multi-Stage Paint Correction & Hydrophobic Protection</span>
-            <h1 class="heading-font text-5xl md:text-7xl font-black tracking-tight text-white mb-6 uppercase leading-tight">
-                The Ultimate Finish,<br>Permanently Locked In.
-            </h1>
-            <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
-                A fixed-location clinical clean bay dedicated to exotic paint restoration, optical clarity refinement, and permanent ceramic shielding coatings.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                <a href="#quote" class="w-full sm:w-auto bg-[#00E5FF] hover:bg-cyan-400 text-black font-bold text-sm tracking-wider uppercase px-8 py-4 rounded-sm neon-glow transition-all">
-                    Request a Bespoke Quote
-                </a>
-                <a href="#services" class="w-full sm:w-auto bg-white/5 hover:bg-white/10 text-white font-semibold text-sm tracking-wider uppercase px-8 py-4 rounded-sm border border-white/10 transition-all">
-                    Explore Studio Tiers
-                </a>
+    <!-- Mobile Hero -->
+    <section class="mobile-hero">
+        <span class="tagline">Fixed Location Paint Studio</span>
+        <h1>The Ultimate Finish,<br>Locked In.</h1>
+        <p>Clinical clean-room environment dedicated to premium multi-stage correction and permanent ceramic shields.</p>
+        <a href="#intake" class="btn-action" style="padding: 14px 28px; font-size: 13px;">Get Studio Quote</a>
+    </section>
+
+    <!-- Vertical Packages -->
+    <section class="content-panel">
+        <div class="panel-title">
+            <h2>Studio Packages</h2>
+            <p>Meticulous restoration for performance vehicles</p>
+        </div>
+
+        <div class="package-list">
+            <!-- Card 1 -->
+            <div class="package-card">
+                <h3>Paint Refinement</h3>
+                <p>Single-stage machine polish eliminating light swirl marks to restore clarity across panels.</p>
+                <div class="package-price">From £450</div>
+                <a href="#intake" class="btn-action btn-full" style="background:transparent; color:#FFF; border:1px solid rgba(255,255,255,0.1);">Select Tier</a>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="package-card featured">
+                <div class="card-badge">Demanded</div>
+                <h3>Multi-Stage Correction</h3>
+                <p>Heavy compounding and micro-finishing steps. Eliminates deep scratches for a mirrored reflection.</p>
+                <div class="package-price">From £850</div>
+                <a href="#intake" class="btn-action btn-full">Select Tier</a>
             </div>
         </div>
     </section>
 
-    <!-- Credibility Ribbon / Badges -->
-    <section class="border-y border-white/5 bg-[#0D0D11] py-8">
-        <div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-center items-center gap-12 opacity-40 grayscale contrast-200">
-            <span class="heading-font tracking-widest text-sm font-bold text-white">AUTHORIZED INSTALLER</span>
-            <span class="heading-font tracking-widest text-lg font-black text-white">XPEL</span>
-            <span class="heading-font tracking-widest text-lg font-black text-white">GTECHNIQ</span>
-            <span class="heading-font tracking-widest text-lg font-black text-white">CERAMIC PRO</span>
+    <!-- Intake Form -->
+    <section id="intake" class="content-panel" style="background-color: #0D0D11;">
+        <div class="panel-title">
+            <h2>Studio Intake</h2>
+            <p>Request multi-day clean bay availability</p>
         </div>
+
+        <form class="mobile-form" onsubmit="event.preventDefault(); alert('Mobile intake logged successfully!');">
+            <div class="form-field">
+                <label>Your Name</label>
+                <input type="text" required>
+            </div>
+            <div class="form-field">
+                <label>Vehicle Model</label>
+                <input type="text" placeholder="e.g. Porsche Vehicle" required>
+            </div>
+            <div class="form-field">
+                <label>Desired Protection</label>
+                <select>
+                    <option>Tier 01 - Refinement</option>
+                    <option>Tier 02 - Multi-Stage Correction</option>
+                    <option>Bespoke Multi-Day Shield</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-action btn-full">Submit Studio Request</button>
+        </form>
     </section>
 
-    <!-- Studio Tiers / Services -->
-    <section id="services" class="py-24 max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="heading-font text-3xl md:text-5xl font-black text-white uppercase tracking-tight">Studio Service Tiers</h2>
-            <p class="text-gray-500 mt-2">Meticulous craftsmanship for modern collectors and performance vehicles.</p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-8">
-            <!-- Tier 1 -->
-            <div class="glass-card rounded-md p-8 transition-all flex flex-col justify-between">
-                <div>
-                    <span class="text-xs font-bold uppercase tracking-widest text-gray-500">Tier 01</span>
-                    <h3 class="heading-font text-2xl font-black text-white uppercase mt-2 mb-4">Paint Refinement</h3>
-                    <p class="text-sm text-gray-400 mb-8 leading-relaxed">Single-stage machine polish eliminating light swirl marks, oxidation, and hazy defects to restore deep gloss clarity across panels.</p>
-                </div>
-                <div>
-                    <div class="text-2xl heading-font font-black text-white mb-6">From £450</div>
-                    <a href="#quote" class="block text-center bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#00E5FF] text-white hover:text-[#00E5FF] text-xs font-bold tracking-wider uppercase py-3 rounded-sm transition-all">Select Package</a>
-                </div>
-            </div>
-
-            <!-- Tier 2 (Highlighted) -->
-            <div class="glass-card rounded-md p-8 transition-all flex flex-col justify-between border-[#00E5FF]/30 relative neon-glow">
-                <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#00E5FF] text-black font-black text-[10px] tracking-widest uppercase px-3 py-1 rounded-full">Most Demanded</div>
-                <div>
-                    <span class="text-xs font-bold uppercase tracking-widest text-[#00E5FF]">Tier 02</span>
-                    <h3 class="heading-font text-2xl font-black text-white uppercase mt-2 mb-4">The Multi-Stage Restor</h3>
-                    <p class="text-sm text-gray-300 mb-8 leading-relaxed">Multi-stage heavy compounding and micro-finishing steps. Eliminates deep paint scratches and holograms to yield a flawless mirrored reflection finish.</p>
-                </div>
-                <div>
-                    <div class="text-2xl heading-font font-black text-[#00E5FF] mb-6">From £850</div>
-                    <a href="#quote" class="block text-center bg-[#00E5FF] hover:bg-cyan-400 text-black text-xs font-bold tracking-wider uppercase py-3 rounded-sm transition-all">Select Package</a>
-                </div>
-            </div>
-
-            <!-- Tier 3 -->
-            <div class="glass-card rounded-md p-8 transition-all flex flex-col justify-between">
-                <div>
-                    <span class="text-xs font-bold uppercase tracking-widest text-gray-500">Tier 03</span>
-                    <h3 class="heading-font text-2xl font-black text-white uppercase mt-2 mb-4">Ceramic Shielding</h3>
-                    <p class="text-sm text-gray-400 mb-8 leading-relaxed">Multi-layer premium nanotechnology protective application coating. Complete hydrophobic defense against environmental elements for up to 9 years.</p>
-                </div>
-                <div>
-                    <div class="text-2xl heading-font font-black text-white mb-6">From £1,200</div>
-                    <a href="#quote" class="block text-center bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#00E5FF] text-white hover:text-[#00E5FF] text-xs font-bold tracking-wider uppercase py-3 rounded-sm transition-all">Select Package</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Before / After Transformation Layout Showcase -->
-    <section id="transformation" class="py-20 bg-[#0D0D11] border-y border-white/5">
-        <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <span class="text-xs font-bold uppercase tracking-widest text-[#00E5FF]">Optical Restoration Proof</span>
-                <h2 class="heading-font text-3xl md:text-4xl font-black text-white uppercase mt-2 mb-6">Flawless Scratch Elimination</h2>
-                <p class="text-gray-400 mb-6 leading-relaxed">We operate highly precise LED array tracking lamps to highlight microscopic clear coat scratches. Our multi-stage compounding permanently removes surface defects rather than just temporarily masking them behind quick fillers.</p>
-                <div class="flex items-center space-x-4 text-sm font-semibold text-white">
+</body>
+</html>
