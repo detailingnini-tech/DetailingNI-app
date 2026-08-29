@@ -42,7 +42,7 @@
     font-family:'Inter',system-ui,sans-serif;
     line-height:1.55;
     -webkit-font-smoothing:antialiased;
-    padding-bottom:64px; /* room for mobile sticky bar */
+    padding-bottom:64px; 
   }
   h1,h2,h3{
     font-family:'Sora',system-ui,sans-serif;
@@ -68,6 +68,7 @@
     color:var(--teal);
   }
   section{padding:72px 0;}
+  section[id] { scroll-margin-top: 85px; } /* Smooth scroll offset for sticky header */
   .section-head{max-width:640px;margin:0 auto 40px;text-align:center;}
   .section-head h2{font-size:clamp(1.6rem,4vw,2.3rem);}
   .section-head p{color:var(--text-dim);font-size:1.02rem;}
@@ -106,6 +107,7 @@
     position:sticky;top:0;z-index:50;
     background:rgba(5,6,10,.85);
     backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
   }
   .nav{
@@ -118,8 +120,8 @@
   .brand-name{font-family:'Sora';font-weight:700;font-size:1.05rem;letter-spacing:-.01em;}
   .brand-tag{font-size:.68rem;color:var(--text-dimmer);letter-spacing:.06em;text-transform:uppercase;margin-top:-2px;}
   .nav-links{display:flex;align-items:center;gap:28px;}
-  .nav-links a{font-size:.92rem;color:var(--text-dim);font-weight:500;}
-  .nav-links a:hover{color:var(--text);}
+  .nav-links a{font-size:.92rem;color:var(--text-dim);font-weight:500; transition: color 0.2s;}
+  .nav-links a:hover, .nav-links a.active {color:var(--teal); font-weight:700;}
   .nav-cta{display:flex;align-items:center;gap:10px;}
   .nav-toggle{display:none;background:none;border:none;color:var(--text);padding:8px;cursor:pointer;}
   .nav-toggle svg{width:24px;height:24px;}
@@ -242,17 +244,31 @@
     color:var(--text-dimmer);font-weight:600;
   }
 
-  /* ---------- Reviews ---------- */
+  /* ---------- Reviews Carousel ---------- */
   .review-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+    display:flex;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    gap:18px;
+    padding-bottom:15px;
+    -webkit-overflow-scrolling:touch;
   }
-  @media (max-width:800px){ .review-grid{grid-template-columns:1fr;} }
+  .review-grid::-webkit-scrollbar { height: 6px; }
+  .review-grid::-webkit-scrollbar-track { background: var(--bg-elev); border-radius: 4px; }
+  .review-grid::-webkit-scrollbar-thumb { background: var(--line); border-radius: 4px; }
+  
   .review-card{
     background:var(--bg-elev);
     border:1px solid var(--line);
     border-radius:var(--radius);
     padding:22px;
+    scroll-snap-align:start;
+    min-width:280px;
+    flex:0 0 100%;
   }
+  @media (min-width:640px){ .review-card{flex:0 0 calc(50% - 9px);} }
+  @media (min-width:900px){ .review-card{flex:0 0 calc(33.333% - 12px);} }
+  
   .review-top{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
   .review-avatar{
     width:40px;height:40px;border-radius:50%;
@@ -328,6 +344,7 @@
     display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
   }
   @media (max-width:900px){ .tier-grid{grid-template-columns:1fr;max-width:440px;margin:0 auto;} }
+  
   .tier-card{
     background:var(--bg-elev);
     border:1px solid var(--line);
@@ -335,8 +352,19 @@
     overflow:hidden;
     display:flex;flex-direction:column;
     position:relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   }
+  
+  .tier-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.4);
+  }
+  
   .tier-card.popular{border-color:var(--purple);}
+  .tier-card.popular:hover {
+    box-shadow: 0 16px 32px rgba(135,126,226,0.15);
+  }
+  
   .popular-flag{
     position:absolute;top:0;left:0;right:0;
     text-align:center;
@@ -370,7 +398,7 @@
   .tier-list li:first-child{border-top:none;}
   .tier-list svg{width:16px;height:16px;flex-shrink:0;margin-top:2px;color:var(--teal);}
 
-  /* ---------- Finance strip ---------- */
+  /* ---------- Finance strip & Accordion ---------- */
   .finance-strip{
     background:var(--bg-elev);
     border:1px solid var(--line);
@@ -390,12 +418,20 @@
   details.terms summary{
     cursor:pointer;color:var(--text-dimmer);font-size:.8rem;font-weight:600;
     list-style:none;display:flex;align-items:center;gap:6px;
+    transition: color 0.2s;
   }
+  details.terms summary:hover { color:var(--teal); }
   details.terms summary::-webkit-details-marker{display:none;}
   details.terms summary::before{content:"+";font-weight:800;color:var(--teal);}
   details.terms[open] summary::before{content:"–";}
   details.terms .terms-body{
     font-size:.78rem;color:var(--text-dimmer);margin-top:10px;line-height:1.6;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   /* ---------- Valeting ---------- */
@@ -407,6 +443,11 @@
   .valet-card{
     background:var(--bg-elev);border:1px solid var(--line);border-radius:var(--radius-sm);
     padding:20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .valet-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
   }
   .valet-kicker{font-size:.7rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);}
   .valet-name{font-family:'Sora';font-size:1.15rem;font-weight:700;margin:6px 0 2px;}
@@ -524,7 +565,7 @@
 </section>
 
 <!-- ===================== CRAFT / FOUNDER ===================== -->
-<section class="craft">
+<section class="craft" id="craft">
   <div class="wrap craft-grid reveal">
     <div>
       <span class="eyebrow">Not Just A Business</span>
@@ -536,90 +577,6 @@
       "Every car that comes through our doors is treated exactly as if it were my own."
       <cite>— Leslie Ross, Founder</cite>
     </blockquote>
-  </div>
-</section>
-
-<!-- ===================== REVIEWS ===================== -->
-<section id="reviews">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Google Reviews</span>
-      <h2>What Newtownards Thinks.</h2>
-    </div>
-    <div class="review-grid reveal">
-      <div class="review-card">
-        <div class="review-top">
-          <div class="review-avatar">K</div>
-          <div>
-            <div class="review-name">Kyle Darley</div>
-            <div class="review-meta">Google Review</div>
-          </div>
-        </div>
-        <div class="stars">★★★★★</div>
-        <p class="review-text">"Great quality job, car looked like it's just out of the showroom again! Friendly, professional and helpful in explaining all the stages involved to bring the paint work back to looking new again!"</p>
-        <div class="google-tag">via Google</div>
-      </div>
-      <div class="review-card">
-        <div class="review-top">
-          <div class="review-avatar">D</div>
-          <div>
-            <div class="review-name">DJDannyDee106</div>
-            <div class="review-meta">5 days ago · 3 reviews</div>
-          </div>
-        </div>
-        <div class="stars">★★★★★</div>
-        <p class="review-text">"Great service, good quality. Will use again :)"</p>
-        <div class="google-tag">via Google</div>
-      </div>
-      <div class="review-card">
-        <div class="review-top">
-          <div class="review-avatar">B</div>
-          <div>
-            <div class="review-name">Bob Young</div>
-            <div class="review-meta">4 weeks ago · 2 reviews</div>
-          </div>
-        </div>
-        <div class="stars">★★★★★</div>
-        <p class="review-text">"Top class work every time, wouldn't go anywhere else."</p>
-        <div class="google-tag">via Google</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== GALLERY ===================== -->
-<section id="gallery">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">See The Difference</span>
-      <h2>Drag To Compare.</h2>
-      <p>A real before &amp; after from the studio, side by side. Drag the slider to see the transformation.</p>
-    </div>
-
-    <!--
-      HOW TO ADD YOUR REAL PHOTO:
-      1. Add your two images to /assets/, e.g. assets/gallery-before.jpg and assets/gallery-after.jpg
-      2. Replace the two <div class="compare-before">/<div class="compare-after"> blocks below
-         with: <img src="assets/gallery-before.jpg" alt="Before ceramic coating">
-         (same for after). Remove the placeholder icon/text spans when you do.
-      3. You can duplicate this whole <div class="compare">...</div> block for more than one example.
-    -->
-    <div class="compare reveal" id="compareSlider">
-      <div class="compare-after">
-        <span class="compare-tag tag-after">After</span>
-        <svg class="compare-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l1.5 3.5L17 8l-3.5 1.5L12 13l-1.5-3.5L7 8l3.5-1.5z"/><circle cx="12" cy="17" r="4"/></svg>
-        <span class="compare-placeholder-text">Studio photos coming soon</span>
-      </div>
-      <div class="compare-before" id="compareBeforeMask">
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;">
-          <span class="compare-tag tag-before">Before</span>
-          <svg class="compare-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg>
-          <span class="compare-placeholder-text">Swap in your real before/after here</span>
-        </div>
-      </div>
-      <div class="compare-handle" id="compareHandle"></div>
-    </div>
-    <p class="gallery-note reveal">This slider is fully working — it just needs real photos. Once the studio's finished, drop your before/after shots into <code>/assets/</code> and swap the two placeholder blocks in the code (instructions are in the HTML comment right above this section).</p>
   </div>
 </section>
 
@@ -716,8 +673,35 @@
   </div>
 </section>
 
+<!-- ===================== GALLERY ===================== -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">See The Difference</span>
+      <h2>Drag To Compare.</h2>
+      <p>A real before &amp; after from the studio, side by side. Drag the slider to see the transformation.</p>
+    </div>
+    
+    <div class="compare reveal" id="compareSlider">
+      <div class="compare-after">
+        <span class="compare-tag tag-after">After</span>
+        <svg class="compare-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l1.5 3.5L17 8l-3.5 1.5L12 13l-1.5-3.5L7 8l3.5-1.5z"/><circle cx="12" cy="17" r="4"/></svg>
+        <span class="compare-placeholder-text">Studio photos coming soon</span>
+      </div>
+      <div class="compare-before" id="compareBeforeMask">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;">
+          <span class="compare-tag tag-before">Before</span>
+          <svg class="compare-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg>
+          <span class="compare-placeholder-text">Swap in your real before/after here</span>
+        </div>
+      </div>
+      <div class="compare-handle" id="compareHandle"></div>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== VALETING ===================== -->
-<section>
+<section id="valeting">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Valeting &amp; Maintenance</span>
@@ -753,6 +737,55 @@
   </div>
 </section>
 
+<!-- ===================== REVIEWS ===================== -->
+<section id="reviews" style="background:var(--bg-elev);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Google Reviews</span>
+      <h2>What Newtownards Thinks.</h2>
+    </div>
+    <!-- Swipeable Review Carousel -->
+    <div class="review-grid reveal">
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-avatar">K</div>
+          <div>
+            <div class="review-name">Kyle Darley</div>
+            <div class="review-meta">Google Review</div>
+          </div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Great quality job, car looked like it's just out of the showroom again! Friendly, professional and helpful in explaining all the stages involved to bring the paint work back to looking new again!"</p>
+        <div class="google-tag">via Google</div>
+      </div>
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-avatar">D</div>
+          <div>
+            <div class="review-name">DJDannyDee106</div>
+            <div class="review-meta">5 days ago · 3 reviews</div>
+          </div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Great service, good quality. Will use again :)"</p>
+        <div class="google-tag">via Google</div>
+      </div>
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-avatar">B</div>
+          <div>
+            <div class="review-name">Bob Young</div>
+            <div class="review-meta">4 weeks ago · 2 reviews</div>
+          </div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Top class work every time, wouldn't go anywhere else."</p>
+        <div class="google-tag">via Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== VISIT / CTA ===================== -->
 <section class="visit" id="visit">
   <div class="wrap visit-grid">
@@ -776,10 +809,8 @@
         <div>
           <div class="label">Studio Hours</div>
           <div class="value">Mon–Fri: 9am–5:30pm<br>Sat: By appointment · Sun: Closed</div>
-          <div class="hours-flag">⚠ Confirm these — the old site listed two different sets of hours.</div>
         </div>
       </div>
-      <a class="btn btn-secondary btn-block" href="https://www.detailingni.co.uk" target="_blank" rel="noopener">www.detailingni.co.uk</a>
     </div>
   </div>
 </section>
@@ -801,7 +832,6 @@
         <div><div class="t1">Proudly Serving</div><div class="t2">Bangor, Belfast &amp; County Down</div></div>
       </div>
     </div>
-
     <div class="footer-grid">
       <div>
         <div class="footer-brand">
@@ -853,6 +883,25 @@
     navToggle.setAttribute('aria-expanded', false);
   }));
 
+  // Scrollspy: Highlight Active Nav Link
+  const sections = document.querySelectorAll('section[id]');
+  const navItems = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      if (scrollY >= sectionTop - 150) {
+        current = section.getAttribute('id');
+      }
+    });
+    navItems.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
+  });
+
   // Before/after compare slider
   (function(){
     const compare = document.getElementById('compareSlider');
@@ -885,7 +934,7 @@
     window.addEventListener('touchend', end);
   })();
 
-  // Scroll reveal
+  // Scroll reveal (Fade & Slide into view)
   if('IntersectionObserver' in window){
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
