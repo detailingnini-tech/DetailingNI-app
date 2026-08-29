@@ -3,16 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DetailingNI | Professional Studio</title>
+    <title>DetailingNI | Angelwax Certified Studio</title>
     <style>
         :root {
-            --bg-color: #0a0a0c;
-            --card-bg: #15171a;
-            --cyan: #00d2ff;
-            --gold: #fbc531;
-            --text-light: #f5f6fa;
-            --text-grey: #a4b0be;
-            --border: #2f3640;
+            --bg-color: #0b0e24;
+            --card-bg: #161a42;
+            --card-bg-alt: #1a1f4d;
+            --accent: #7c83ff;
+            --accent-dim: #5b62e8;
+            --gold: #f0c419;
+            --text-light: #f5f6fb;
+            --text-grey: #98a0c4;
+            --border: #2a2f5c;
+            --whatsapp: #25D366;
         }
 
         * {
@@ -26,37 +29,60 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-light);
-            padding-bottom: 80px;
+            padding-bottom: 130px;
         }
 
-        /* Brochure Style Header & Logo */
         header {
-            background-color: #000;
-            padding: 15px 20px;
-            border-bottom: 2px solid var(--cyan);
+            background-color: #05061a;
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 10px;
+        }
+
+        .brand-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-badge {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            background: #05061a;
+            border: 2px solid transparent;
+            background-image: linear-gradient(#05061a, #05061a), linear-gradient(135deg, #4dd8ff, var(--accent) 55%, #b06bff);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
         }
 
         .brand-logo {
-            font-size: 1.4rem;
+            font-size: 1.15rem;
             font-weight: 900;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             text-transform: uppercase;
+            line-height: 1.1;
         }
 
         .brand-logo span {
-            color: var(--cyan);
+            color: var(--accent);
         }
 
         .header-sub {
-            font-size: 0.6rem;
+            font-size: 0.58rem;
             color: var(--text-grey);
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
             display: block;
             margin-top: 2px;
@@ -66,15 +92,14 @@
             background-color: var(--card-bg);
             text-align: center;
             padding: 8px;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: bold;
-            color: var(--cyan);
+            color: var(--gold);
             border-bottom: 1px solid var(--border);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        /* Navigation */
         .tab-content {
             display: none;
             padding: 20px;
@@ -92,44 +117,51 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Typography & Headings */
         h1, h2, h3 {
             text-transform: uppercase;
             font-weight: 800;
         }
 
         .section-title {
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             margin-bottom: 5px;
-            line-height: 1.1;
+            line-height: 1.15;
         }
 
         .section-subtitle {
-            color: var(--cyan);
-            font-size: 0.9rem;
+            color: var(--accent);
+            font-size: 0.88rem;
             margin-bottom: 20px;
             font-weight: 600;
         }
 
-        /* Cards */
         .card {
             background-color: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 4px;
+            border-radius: 6px;
             padding: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             position: relative;
         }
 
         .hero-banner {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&w=800&q=80') center/cover;
+            background: radial-gradient(circle at 80% 0%, rgba(124,131,255,0.18), transparent 55%), linear-gradient(180deg, #0d1030, #05061a);
             padding: 40px 20px;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            border-bottom: 3px solid var(--cyan);
+            border-radius: 6px;
+            margin-bottom: 18px;
+            border: 1px solid var(--border);
+            border-bottom: 3px solid var(--accent);
+            text-align: center;
         }
 
-        /* Pricing Packages matching Brochure */
+        .hero-eyebrow {
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            color: var(--text-grey);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
         .price-header {
             display: flex;
             justify-content: space-between;
@@ -140,23 +172,24 @@
         }
 
         .package-name {
-            font-size: 1.5rem;
-            color: var(--cyan);
+            font-size: 1.4rem;
+            color: var(--accent);
         }
 
         .package-price {
-            font-size: 2rem;
+            font-size: 1.9rem;
             font-weight: 900;
             line-height: 1;
         }
 
         .package-price span {
             display: block;
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             color: var(--text-grey);
             font-weight: 400;
             text-align: right;
             margin-top: 4px;
+            text-transform: uppercase;
         }
 
         .badge {
@@ -164,31 +197,45 @@
             top: -12px;
             right: 20px;
             padding: 6px 12px;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 800;
             text-transform: uppercase;
             border-radius: 20px;
             letter-spacing: 1px;
+            background-color: var(--gold);
+            color: #1a1400;
         }
-
-        .badge-gold { background-color: var(--gold); color: #000; }
-        .badge-cyan { background-color: var(--cyan); color: #000; }
 
         .feature-icons {
             display: flex;
-            gap: 10px;
+            gap: 16px;
             margin-bottom: 15px;
         }
 
         .f-icon {
-            background-color: #222;
-            color: var(--text-light);
-            font-size: 0.7rem;
-            padding: 4px 10px;
-            border-radius: 2px;
-            border: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .f-icon .dot {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: rgba(124,131,255,0.12);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.95rem;
+        }
+
+        .f-icon .label {
+            font-size: 0.6rem;
+            color: var(--text-grey);
             text-transform: uppercase;
-            font-weight: bold;
+            letter-spacing: 0.5px;
         }
 
         ul.features {
@@ -209,7 +256,7 @@
             content: '✓';
             position: absolute;
             left: 0;
-            color: var(--cyan);
+            color: var(--accent);
             font-weight: bold;
         }
 
@@ -218,31 +265,108 @@
             width: 100%;
             padding: 15px;
             text-align: center;
-            background-color: var(--cyan);
-            color: #000;
+            background-color: var(--accent);
+            color: #05061a;
             text-decoration: none;
             font-weight: 800;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             text-transform: uppercase;
-            border-radius: 2px;
+            border-radius: 4px;
             letter-spacing: 1px;
             border: none;
         }
 
         .btn-outline {
             background-color: transparent;
-            color: var(--cyan);
-            border: 2px solid var(--cyan);
+            color: var(--text-light);
+            border: 2px solid var(--border);
         }
-        
-        .btn-whatsapp { background-color: #25D366; color: #fff; margin-bottom: 10px; }
 
-        /* Bottom Nav */
+        .btn-whatsapp { background-color: var(--whatsapp); color: #fff; margin-bottom: 10px; }
+
+        .finance-callout {
+            background: linear-gradient(135deg, rgba(240,196,25,0.12), rgba(240,196,25,0.03));
+            border: 1px solid var(--gold);
+            border-radius: 6px;
+            padding: 16px;
+            margin: 24px 0;
+            display: flex;
+            gap: 14px;
+            align-items: center;
+        }
+
+        .finance-callout .tag {
+            background-color: var(--gold);
+            color: #1a1400;
+            font-weight: 900;
+            font-size: 0.85rem;
+            padding: 8px 10px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        .finance-callout p {
+            font-size: 0.78rem;
+            color: var(--text-grey);
+            line-height: 1.4;
+        }
+
+        .fine-print {
+            font-size: 0.68rem;
+            color: var(--text-grey);
+            text-align: center;
+            margin: 10px 0 24px;
+            line-height: 1.5;
+        }
+
+        .stars {
+            color: var(--gold);
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+
+        .quote {
+            color: var(--text-light);
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            border-left: 3px solid var(--accent);
+            padding-left: 10px;
+        }
+
+        .trust-strip {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 18px 20px 0;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            border-top: 1px solid var(--border);
+            padding-top: 18px;
+        }
+
+        .trust-item {
+            flex: 1;
+            text-align: center;
+            font-size: 0.65rem;
+            color: var(--text-grey);
+            line-height: 1.4;
+        }
+
+        .trust-item strong {
+            display: block;
+            color: var(--text-light);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            margin-bottom: 3px;
+        }
+
         .bottom-nav {
             position: fixed;
             bottom: 0;
             width: 100%;
-            background-color: #000;
+            background-color: #05061a;
             display: flex;
             border-top: 1px solid var(--border);
             padding-bottom: env(safe-area-inset-bottom);
@@ -254,101 +378,106 @@
             border: none;
             color: var(--text-grey);
             padding: 15px 0;
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
         .nav-btn.active {
-            color: var(--cyan);
-            border-top: 2px solid var(--cyan);
-            background-color: rgba(0, 210, 255, 0.05);
+            color: var(--accent);
+            border-top: 2px solid var(--accent);
+            background-color: rgba(124,131,255,0.06);
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div>
-            <div class="brand-logo">DETAILING<span>NI</span></div>
-            <div class="header-sub">Angelwax Certified Studio</div>
+        <div class="brand-wrap">
+            <div class="logo-badge">◆</div>
+            <div>
+                <div class="brand-logo">DETAILING<span>NI</span></div>
+                <span class="header-sub">Angelwax Certified Installer</span>
+            </div>
         </div>
-        <button onclick="openTab('contact')" class="btn" style="width: auto; padding: 8px 15px; font-size: 0.7rem;">Book Now</button>
+        <button onclick="openTab('contact')" class="btn" style="width: auto; padding: 8px 15px; font-size: 0.68rem;">Book Now</button>
     </header>
-    
+
     <div class="finance-banner">
-        0% Finance Available — 3 Monthly Payments[span_0](start_span)[span_0](end_span)
+        0% Finance Available — 3 Monthly Payments
     </div>
 
     <!-- HOME TAB -->
     <div id="home" class="tab-content active">
         <div class="hero-banner">
-            <h1 style="font-size: 2.2rem; margin-bottom: 10px;">Beyond A Showroom Shine.</h1>
-            <p style="color: var(--cyan); font-weight: bold;">Ceramic coatings that last years, not weeks.[span_1](start_span)[span_1](end_span)</p>
+            <div class="hero-eyebrow">Newtownards Detailing Studio</div>
+            <h1 style="font-size: 2rem; margin-bottom: 10px;">Beyond A Showroom Shine.</h1>
+            <p style="color: var(--accent); font-weight: bold;">Ceramic coatings that last years, not weeks.</p>
         </div>
 
         <div class="card">
-            <h2>Not Just A Business. My Craft.</h2>
-            <p style="color: var(--text-grey); font-size: 0.9rem; margin-top: 10px; line-height: 1.5;">From our custom-built, fully insured studio in Newtownards, I bring 20+ years of hands-on experience to every car[span_2](start_span)[span_2](end_span).</p>
-            <p style="color: var(--text-grey); font-size: 0.9rem; margin-top: 10px; line-height: 1.5;">As a Certified Angelwax Installer, I use professional-grade coatings you can't buy in shops for a deeper gloss and protection that actually lasts[span_3](start_span)[span_3](end_span).</p>
-            <p style="color: var(--text-light); font-weight: bold; font-size: 0.9rem; margin-top: 15px; border-left: 3px solid var(--cyan); padding-left: 10px;">"Every car that comes through our doors is treated exactly as if it were my own." — Leslie Ross[span_4](start_span)[span_4](end_span)</p>
+            <h2 style="font-size: 1.1rem;">Not Just A Business. My Craft.</h2>
+            <p style="color: var(--text-grey); font-size: 0.9rem; margin-top: 10px; line-height: 1.5;">From our custom-built, fully insured studio in Newtownards, I bring 20+ years of hands-on experience to every car.</p>
+            <p style="color: var(--text-grey); font-size: 0.9rem; margin-top: 10px; line-height: 1.5;">As a Certified Angelwax Installer, I use professional-grade coatings you can't buy in shops — for a deeper gloss and protection that actually lasts.</p>
+            <p class="quote">"Every car that comes through our doors is treated exactly as if it were my own." — Leslie Ross, Founder</p>
         </div>
 
         <div class="card" style="border-left: 3px solid var(--gold);">
-            <h3 style="font-size: 0.8rem; color: var(--gold); margin-bottom: 5px;">GOOGLE REVIEW</h3>
-            <p style="font-size: 0.9rem; font-style: italic; margin-bottom: 10px;">"Great quality job, car looked like it's just out of the show room again! Friendly, professional and helpful...[span_5](start_span)"[span_5](end_span)</p>
-            <p style="font-size: 0.8rem; font-weight: bold; color: var(--text-grey);">— Kyle Darley[span_6](start_span)[span_6](end_span)</p>
+            <h3 style="font-size: 0.75rem; color: var(--gold); margin-bottom: 8px; letter-spacing: 1px;">GOOGLE REVIEW</h3>
+            <div class="stars">★★★★★</div>
+            <p style="font-size: 0.9rem; font-style: italic; margin-bottom: 10px; color: var(--text-light);">"Great quality job, car looked like it's just out of the show room again! Friendly, professional and helpful in explaining all the stages involved to bring the paint work back to looking new again!"</p>
+            <p style="font-size: 0.8rem; font-weight: bold; color: var(--text-grey);">— Kyle Darley</p>
         </div>
     </div>
 
     <!-- SERVICES TAB -->
     <div id="services" class="tab-content">
         <h2 class="section-title">Ceramic Packages</h2>
-        <p class="section-subtitle">Lock In The Perfect Finish. No more waxing. Half the washing time.[span_7](start_span)[span_7](end_span)</p>
+        <p class="section-subtitle">Lock In The Perfect Finish. No more waxing. Half the washing time.</p>
 
         <!-- GOLD -->
         <div class="card" style="border: 1px solid var(--gold);">
-            <div class="badge badge-gold">Our Hero Package[span_8](start_span)[span_8](end_span)</div>
+            <div class="badge">Our Hero Package</div>
             <div class="price-header">
                 <div>
                     <h3 class="package-name" style="color: var(--gold);">Gold</h3>
                 </div>
-                <div class="package-price">£950<span>INC VAT[span_9](start_span)[span_9](end_span)</span></div>
+                <div class="package-price">£950<span>Inc VAT</span></div>
             </div>
-            <p style="font-weight: bold; margin-bottom: 15px;">Our glossiest, toughest, most extreme finish.[span_10](start_span)[span_10](end_span)</p>
+            <p style="font-weight: bold; margin-bottom: 15px;">Our glossiest, toughest, most extreme finish.</p>
             <div class="feature-icons">
-                <span class="f-icon">Paint</span>
-                <span class="f-icon">Glass</span>
-                <span class="f-icon">Wheels</span>
+                <div class="f-icon"><div class="dot">🖌</div><span class="label">Paint</span></div>
+                <div class="f-icon"><div class="dot">💧</div><span class="label">Glass</span></div>
+                <div class="f-icon"><div class="dot">❄</div><span class="label">Wheels</span></div>
             </div>
             <ul class="features">
-                <li>Full paint correction to remove all safe defects[span_11](start_span)[span_11](end_span)</li>
-                <li>5-year Angelwax NEBULA Graphene coating[span_12](start_span)[span_12](end_span)</li>
-                <li>Maximum chemical resistance, slickness & water beading[span_13](start_span)[span_13](end_span)</li>
+                <li>Full paint correction to remove all safe defects</li>
+                <li>5-year Angelwax NEBULA Graphene coating</li>
+                <li>Maximum chemical resistance, slickness & water beading</li>
             </ul>
-            <button onclick="openTab('contact')" class="btn" style="background-color: var(--gold);">Book Gold</button>
+            <button onclick="openTab('contact')" class="btn" style="background-color: var(--gold); color: #1a1400;">Book Gold</button>
         </div>
 
         <!-- SILVER -->
-        <div class="card" style="border: 1px solid var(--cyan);">
-            <div class="badge badge-cyan">Most Popular[span_14](start_span)[span_14](end_span)</div>
+        <div class="card" style="border: 1px solid var(--accent);">
+            <div class="badge">Most Popular</div>
             <div class="price-header">
                 <div>
                     <h3 class="package-name">Silver</h3>
-                    <p style="font-size: 0.7rem; color: var(--text-grey); margin-top: 5px;">FULL CORRECTION[span_15](start_span)[span_15](end_span)</p>
+                    <p style="font-size: 0.68rem; color: var(--text-grey); margin-top: 5px;">FULL CORRECTION</p>
                 </div>
-                <div class="package-price">£625<span>INC VAT[span_16](start_span)[span_16](end_span)</span></div>
+                <div class="package-price">£625<span>Inc VAT</span></div>
             </div>
-            <p style="font-weight: bold; margin-bottom: 15px;">Full swirl & scratch removal for a flawless finish.[span_17](start_span)[span_17](end_span)</p>
+            <p style="font-weight: bold; margin-bottom: 15px;">Full swirl & scratch removal for a flawless finish.</p>
             <div class="feature-icons">
-                <span class="f-icon">Paint</span>
-                <span class="f-icon">Glass</span>
-                <span class="f-icon">Wheels</span>
+                <div class="f-icon"><div class="dot">🖌</div><span class="label">Paint</span></div>
+                <div class="f-icon"><div class="dot">💧</div><span class="label">Glass</span></div>
+                <div class="f-icon"><div class="dot">❄</div><span class="label">Wheels</span></div>
             </div>
             <ul class="features">
-                <li>2-stage machine correction to remove swirls[span_18](start_span)[span_18](end_span)</li>
-                <li>5-year Angelwax professional ceramic coating[span_19](start_span)[span_19](end_span)</li>
+                <li>2-stage machine correction to remove swirls</li>
+                <li>5-year Angelwax professional ceramic coating</li>
             </ul>
             <button onclick="openTab('contact')" class="btn">Book Silver</button>
         </div>
@@ -358,73 +487,86 @@
             <div class="price-header">
                 <div>
                     <h3 class="package-name" style="color: #fff;">Bronze</h3>
-                    <p style="font-size: 0.7rem; color: var(--text-grey); margin-top: 5px;">ENTRY PROTECTION[span_20](start_span)[span_20](end_span)</p>
+                    <p style="font-size: 0.68rem; color: var(--text-grey); margin-top: 5px;">ENTRY PROTECTION</p>
                 </div>
-                <div class="package-price">£480<span>INC VAT[span_21](start_span)[span_21](end_span)</span></div>
+                <div class="package-price">£480<span>Inc VAT</span></div>
             </div>
-            <p style="font-weight: bold; margin-bottom: 15px;">Entry-level ceramic protection with real gloss.[span_22](start_span)[span_22](end_span)</p>
+            <p style="font-weight: bold; margin-bottom: 15px;">Entry-level ceramic protection with real gloss.</p>
             <div class="feature-icons">
-                <span class="f-icon">Paint</span>
-                <span class="f-icon">Glass</span>
+                <div class="f-icon"><div class="dot">🖌</div><span class="label">Paint</span></div>
+                <div class="f-icon"><div class="dot">💧</div><span class="label">Glass</span></div>
             </div>
             <ul class="features">
-                <li>Deep chemical cleanse to remove invisible road grime & fallout[span_23](start_span)[span_23](end_span)</li>
-                <li>Gloss-enhancing machine polish[span_24](start_span)[span_24](end_span)</li>
-                <li>2-year Angelwax ceramic on paint & glass[span_25](start_span)[span_25](end_span)</li>
+                <li>Deep chemical cleanse to remove invisible road grime & fallout</li>
+                <li>Gloss-enhancing machine polish</li>
+                <li>2-year Angelwax ceramic on paint & glass</li>
             </ul>
-            <button onclick="openTab('contact')" class="btn btn-outline" style="color: #fff; border-color: #fff;">Book Bronze</button>
+            <button onclick="openTab('contact')" class="btn btn-outline">Book Bronze</button>
         </div>
 
-        <h2 class="section-title" style="margin-top: 40px;">Valeting & Maintenance</h2>
-        <p class="section-subtitle">Keep It Showroom Fresh. Between coatings.[span_26](start_span)[span_26](end_span)</p>
-        <p style="font-size: 0.75rem; color: var(--text-grey); text-align: center; margin-bottom: 15px;">Prices from - final cost depends on vehicle size & condition[span_27](start_span)[span_27](end_span)</p>
-
-        <!-- Valeting Cards (Using renamed tiers to prevent booking confusion) -->
-        <div class="card">
-            <div class="price-header" style="margin-bottom: 10px; padding-bottom: 10px;">
-                <h3 style="font-size: 1.1rem;">Standard Valet</h3>
-                <div class="package-price" style="font-size: 1.2rem;">From £60</div>
-            </div>
-            <p style="font-size: 0.85rem; color: var(--text-grey);">Essential clean - safe multi-stage wash, full interior vacuum & wipe down.[span_28](start_span)[span_28](end_span)</p>
+        <div class="finance-callout">
+            <div class="tag">0%<br>APR</div>
+            <p>Spread the cost — protect your investment today and pay over 3 months with Payment Assist. No hidden fees. Just ask in the studio.</p>
         </div>
 
-        <div class="card">
-            <div class="price-header" style="margin-bottom: 10px; padding-bottom: 10px;">
-                <h3 style="font-size: 1.1rem;">Premium Valet</h3>
-                <div class="package-price" style="font-size: 1.2rem;">From £85</div>
-            </div>
-            <p style="font-size: 0.85rem; color: var(--text-grey);">Exterior boost - Standard Valet plus tar removal & ceramic top-up spray for extra gloss & beading.[span_29](start_span)[span_29](end_span)</p>
-        </div>
+        <p class="fine-print">A £100 surcharge applies to larger vehicles (SUVs, 4x4s, vans) for Signature Details. 0% finance available via Payment Assist, subject to status. Terms apply.</p>
+
+        <h2 class="section-title" style="margin-top: 30px;">Valeting & Maintenance</h2>
+        <p class="section-subtitle">Keep It Showroom Fresh. Between coatings.</p>
+        <p style="font-size: 0.72rem; color: var(--text-grey); text-align: center; margin-bottom: 15px;">Prices from — final cost depends on vehicle size & condition.</p>
 
         <div class="card">
             <div class="price-header" style="margin-bottom: 10px; padding-bottom: 10px;">
-                <h3 style="font-size: 1.1rem;">Executive Valet</h3>
-                <div class="package-price" style="font-size: 1.2rem;">From £110</div>
+                <h3 style="font-size: 1.05rem;">Standard Valet</h3>
+                <div class="package-price" style="font-size: 1.15rem;">From £60</div>
             </div>
-            <p style="font-size: 0.85rem; color: var(--text-grey);">Interior focus - Standard Valet plus deep steam clean & conditioning for fabric, leather & plastics.[span_30](start_span)[span_30](end_span)</p>
+            <p style="font-size: 0.85rem; color: var(--text-grey);">Essential clean — safe multi-stage wash, full interior vacuum & wipe down.</p>
         </div>
 
         <div class="card">
             <div class="price-header" style="margin-bottom: 10px; padding-bottom: 10px;">
-                <h3 style="font-size: 1.1rem;">Ultimate Valet</h3>
-                <div class="package-price" style="font-size: 1.2rem;">From £170</div>
+                <h3 style="font-size: 1.05rem;">Premium Valet</h3>
+                <div class="package-price" style="font-size: 1.15rem;">From £85</div>
             </div>
-            <p style="font-size: 0.85rem; color: var(--text-grey);">The full reset - complete exterior decontamination & full interior restoration.[span_31](start_span)[span_31](end_span)</p>
+            <p style="font-size: 0.85rem; color: var(--text-grey);">Exterior boost — Standard Valet plus tar removal & ceramic top-up spray for extra gloss & beading.</p>
+        </div>
+
+        <div class="card">
+            <div class="price-header" style="margin-bottom: 10px; padding-bottom: 10px;">
+                <h3 style="font-size: 1.05rem;">Executive Valet</h3>
+                <div class="package-price" style="font-size: 1.15rem;">From £110</div>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-grey);">Interior focus — Standard Valet plus deep steam clean & conditioning for fabric, leather & plastics.</p>
+        </div>
+
+        <div class="card">
+            <div class="price-header" style="margin-bottom: 10px; padding-bottom: 10px;">
+                <h3 style="font-size: 1.05rem;">Ultimate Valet</h3>
+                <div class="package-price" style="font-size: 1.15rem;">From £170</div>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-grey);">The full reset — complete exterior decontamination & full interior restoration.</p>
         </div>
     </div>
 
     <!-- CONTACT TAB -->
     <div id="contact" class="tab-content">
         <h2 class="section-title">Visit The Studio</h2>
-        <p class="section-subtitle">See What Your Paint Could Really Look Like.[span_32](start_span)[span_32](end_span)</p>
-        
+        <p class="section-subtitle">See What Your Paint Could Really Look Like.</p>
+
         <div class="card">
-            <p style="color: var(--text-grey); font-size: 0.9rem; margin-bottom: 15px; line-height: 1.5;">Book a free 10-minute paint inspection in our custom-built studio. We'll evaluate your car under our dedicated double-bay light tunnel, grab a fresh bean-to-cup espresso, and show you exactly what's possible — no pressure to book.[span_33](start_span)[span_33](end_span)</p>
-            <p style="font-weight: bold; margin-bottom: 20px;">129 Quarry Heights<br>Newtownards, BT23 7SZ[span_34](start_span)[span_34](end_span)</p>
-            
-            <a href="https://wa.me/447721326149" class="btn btn-whatsapp">WhatsApp Us Now[span_35](start_span)[span_35](end_span)</a>
-            <a href="tel:07721326149" class="btn btn-outline">Call 07721 326149[span_36](start_span)[span_36](end_span)</a>
+            <p style="color: var(--text-grey); font-size: 0.9rem; margin-bottom: 15px; line-height: 1.5;">Book a free 10-minute paint inspection in our custom-built studio. We'll evaluate your car under our dedicated double-bay light tunnel and custom hexagonal LED lighting, grab a fresh bean-to-cup espresso, and show you exactly what's possible on video — no pressure to book.</p>
+            <p style="font-weight: bold; margin-bottom: 20px;">129 Quarry Heights<br>Newtownards, BT23 7SZ</p>
+
+            <a href="https://wa.me/447721326149" class="btn btn-whatsapp">WhatsApp Us Now</a>
+            <a href="tel:07721326149" class="btn btn-outline" style="margin-bottom: 10px;">Call 07721 326149</a>
+            <a href="https://www.detailingni.co.uk" class="btn-outline" style="display:block; text-align:center; padding: 12px; border-radius: 4px; text-decoration:none; font-size: 0.8rem; color: var(--text-grey);">www.detailingni.co.uk</a>
         </div>
+    </div>
+
+    <div class="trust-strip">
+        <div class="trust-item"><strong>Fully Insured</strong>Professional Studio</div>
+        <div class="trust-item"><strong>Angelwax Certified</strong>Professional Installer</div>
+        <div class="trust-item"><strong>Proudly Serving</strong>Bangor, Belfast & County Down</div>
     </div>
 
     <!-- Bottom Nav -->
@@ -438,7 +580,7 @@
         function openTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-            
+
             document.getElementById(tabId).classList.add('active');
             event.currentTarget.classList.add('active');
             window.scrollTo(0, 0);
