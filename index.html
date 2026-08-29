@@ -1,899 +1,152 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DetailingNI | Angelwax Certified Studio — Newtownards</title>
-<meta name="description" content="Ceramic coatings that last years, not weeks. Free 10-minute paint check, no appointment needed. Newtownards studio serving Bangor, Belfast & County Down.">
-<link rel="icon" type="image/png" href="assets/favicon-64.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#05060a;
-    --bg-elev:#0d0f18;
-    --bg-elev-2:#12141f;
-    --line:#1f2230;
-    --teal:#6ecbd5;
-    --purple:#877ee2;
-    --grad:linear-gradient(135deg,var(--teal),var(--purple));
-    --text:#f4f5fa;
-    --text-dim:#9aa0b8;
-    --text-dimmer:#666c82;
-    --gold:#f0b429;
-    --bronze-a:#8a5a2b; --bronze-b:#c98f4a;
-    --silver-a:#5b6478; --silver-b:#a9b2c6;
-    --goldtier-a:#a9740f; --goldtier-b:#f0c14b;
-    --radius:16px;
-    --radius-sm:10px;
-    --maxw:1120px;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
-  }
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--text);
-    font-family:'Inter',system-ui,sans-serif;
-    line-height:1.55;
-    -webkit-font-smoothing:antialiased;
-    padding-bottom:64px; /* room for mobile sticky bar */
-  }
-  h1,h2,h3{
-    font-family:'Sora',system-ui,sans-serif;
-    line-height:1.12;
-    margin:0 0 .5em;
-    letter-spacing:-0.01em;
-  }
-  p{margin:0 0 1em;}
-  a{color:inherit;text-decoration:none;}
-  img{max-width:100%;display:block;}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px;}
-  .grad-text{
-    background:var(--grad);
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-  }
-  .eyebrow{
-    text-transform:uppercase;
-    letter-spacing:.14em;
-    font-size:.72rem;
-    font-weight:700;
-    color:var(--teal);
-  }
-  section{padding:72px 0;}
-  .section-head{max-width:640px;margin:0 auto 40px;text-align:center;}
-  .section-head h2{font-size:clamp(1.6rem,4vw,2.3rem);}
-  .section-head p{color:var(--text-dim);font-size:1.02rem;}
-
-  /* ---------- Buttons ---------- */
-  .btn{
-    display:inline-flex;align-items:center;justify-content:center;gap:8px;
-    padding:15px 26px;
-    border-radius:999px;
-    font-weight:700;
-    font-size:.98rem;
-    border:1px solid transparent;
-    cursor:pointer;
-    min-height:52px;
-    transition:transform .15s ease, box-shadow .15s ease, opacity .15s ease;
-    white-space:nowrap;
-  }
-  .btn:active{transform:scale(.97);}
-  .btn-primary{
-    background:var(--grad);
-    color:#05060a;
-    box-shadow:0 8px 24px -8px rgba(135,126,226,.55);
-  }
-  .btn-primary:hover{opacity:.92;}
-  .btn-secondary{
-    background:transparent;
-    border-color:var(--line);
-    color:var(--text);
-  }
-  .btn-secondary:hover{border-color:var(--purple);}
-  .btn-block{width:100%;}
-  .btn-sm{padding:10px 18px;min-height:auto;font-size:.85rem;}
-
-  /* ---------- Header ---------- */
-  header{
-    position:sticky;top:0;z-index:50;
-    background:rgba(5,6,10,.85);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:12px 20px;
-    max-width:var(--maxw);margin:0 auto;
-  }
-  .brand{display:flex;align-items:center;gap:10px;}
-  .brand img{width:40px;height:40px;}
-  .brand-name{font-family:'Sora';font-weight:700;font-size:1.05rem;letter-spacing:-.01em;}
-  .brand-tag{font-size:.68rem;color:var(--text-dimmer);letter-spacing:.06em;text-transform:uppercase;margin-top:-2px;}
-  .nav-links{display:flex;align-items:center;gap:28px;}
-  .nav-links a{font-size:.92rem;color:var(--text-dim);font-weight:500;}
-  .nav-links a:hover{color:var(--text);}
-  .nav-cta{display:flex;align-items:center;gap:10px;}
-  .nav-toggle{display:none;background:none;border:none;color:var(--text);padding:8px;cursor:pointer;}
-  .nav-toggle svg{width:24px;height:24px;}
-  .mobile-panel{display:none;}
-
-  @media (max-width:860px){
-    .nav-links{display:none;}
-    .nav-cta .btn-secondary{display:none;}
-    .nav-toggle{display:block;}
-    .mobile-panel.open{
-      display:flex;flex-direction:column;gap:2px;
-      padding:8px 20px 20px;
-      border-top:1px solid var(--line);
-    }
-    .mobile-panel a{
-      padding:14px 4px;font-size:1rem;color:var(--text);
-      border-bottom:1px solid var(--line);
-    }
-  }
-
-  /* ---------- Sticky mobile action bar ---------- */
-  .mobile-bar{
-    display:none;
-    position:fixed;bottom:0;left:0;right:0;z-index:60;
-    background:var(--bg-elev);
-    border-top:1px solid var(--line);
-    padding:8px 10px calc(8px + env(safe-area-inset-bottom));
-    gap:8px;
-  }
-  .mobile-bar a{
-    flex:1;
-    display:flex;align-items:center;justify-content:center;gap:6px;
-    padding:12px 8px;border-radius:12px;font-weight:700;font-size:.9rem;
-  }
-  .mobile-bar .wa{background:#25d366;color:#04170c;}
-  .mobile-bar .call{background:var(--bg-elev-2);color:var(--text);border:1px solid var(--line);}
-  @media (max-width:640px){ .mobile-bar{display:flex;} }
-
-  /* ---------- Hero ---------- */
-  .hero{
-    padding:64px 0 56px;
-    text-align:center;
-    position:relative;
-    overflow:hidden;
-  }
-  .hero::before{
-    content:"";
-    position:absolute;top:-200px;left:50%;transform:translateX(-50%);
-    width:900px;height:500px;
-    background:radial-gradient(ellipse at center, rgba(135,126,226,.22), transparent 60%);
-    pointer-events:none;
-  }
-  .hero-inner{position:relative;max-width:720px;margin:0 auto;}
-  .hero .eyebrow-row{
-    display:flex;align-items:center;justify-content:center;gap:10px;
-    margin-bottom:22px;flex-wrap:wrap;
-  }
-  .pill{
-    display:inline-flex;align-items:center;gap:6px;
-    background:var(--bg-elev);
-    border:1px solid var(--line);
-    padding:6px 14px;border-radius:999px;
-    font-size:.78rem;font-weight:600;color:var(--text-dim);
-  }
-  .pill .dot{width:6px;height:6px;border-radius:50%;background:var(--teal);}
-  h1.hero-h1{
-    font-size:clamp(2.3rem,7vw,4rem);
-    font-weight:800;
-    margin-bottom:16px;
-  }
-  .hero-sub{
-    font-size:clamp(1.05rem,2.4vw,1.3rem);
-    color:var(--text-dim);
-    max-width:480px;margin:0 auto 32px;
-  }
-  .hero-ctas{
-    display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:22px;
-  }
-  .finance-badge{
-    display:inline-flex;align-items:center;gap:8px;
-    background:var(--gold);
-    color:#241900;
-    font-weight:800;
-    font-size:.85rem;
-    padding:9px 18px;
-    border-radius:999px;
-    margin-bottom:30px;
-  }
-  .trust-row{
-    display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;
-    color:var(--text-dimmer);font-size:.82rem;font-weight:600;
-  }
-  .trust-row span{display:inline-flex;align-items:center;gap:8px;}
-  .trust-row svg{width:15px;height:15px;flex-shrink:0;color:var(--teal);}
-
-  /* ---------- Craft / founder ---------- */
-  .craft{
-    background:var(--bg-elev);
-    border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
-  }
-  .craft-grid{
-    display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;
-  }
-  @media (max-width:800px){ .craft-grid{grid-template-columns:1fr;gap:32px;} }
-  .craft h2{font-size:clamp(1.5rem,3.6vw,2.1rem);}
-  .craft p{color:var(--text-dim);}
-  blockquote{
-    margin:0;
-    padding:22px 24px;
-    background:var(--bg-elev-2);
-    border-left:3px solid var(--purple);
-    border-radius:0 var(--radius-sm) var(--radius-sm) 0;
-    font-size:1.05rem;
-    font-style:italic;
-    color:var(--text);
-  }
-  blockquote cite{
-    display:block;margin-top:14px;font-style:normal;font-size:.85rem;
-    color:var(--text-dimmer);font-weight:600;
-  }
-
-  /* ---------- Reviews ---------- */
-  .review-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
-  }
-  @media (max-width:800px){ .review-grid{grid-template-columns:1fr;} }
-  .review-card{
-    background:var(--bg-elev);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:22px;
-  }
-  .review-top{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
-  .review-avatar{
-    width:40px;height:40px;border-radius:50%;
-    background:var(--grad);
-    display:flex;align-items:center;justify-content:center;
-    font-weight:700;color:#05060a;font-size:.95rem;flex-shrink:0;
-  }
-  .review-name{font-weight:700;font-size:.92rem;}
-  .review-meta{font-size:.76rem;color:var(--text-dimmer);}
-  .stars{color:var(--gold);letter-spacing:2px;font-size:.9rem;margin-bottom:8px;}
-  .review-text{font-size:.92rem;color:var(--text-dim);margin:0;}
-  .google-tag{
-    display:inline-flex;align-items:center;gap:6px;
-    margin-top:14px;font-size:.72rem;color:var(--text-dimmer);font-weight:600;
-  }
-
-  /* ---------- Gallery / before-after ---------- */
-  .gallery-note{
-    text-align:center;color:var(--text-dimmer);font-size:.85rem;
-    max-width:520px;margin:20px auto 0;
-    border:1px dashed var(--line);border-radius:var(--radius-sm);
-    padding:14px 18px;
-  }
-  .compare{
-    position:relative;
-    max-width:760px;margin:0 auto;
-    aspect-ratio:16/10;
-    border-radius:var(--radius);
-    overflow:hidden;
-    border:1px solid var(--line);
-    cursor:ew-resize;
-    user-select:none;
-    -webkit-user-select:none;
-    touch-action:pan-y;
-  }
-  .compare-after,.compare-before{
-    position:absolute;inset:0;
-    display:flex;align-items:center;justify-content:center;
-    flex-direction:column;gap:10px;
-    background:linear-gradient(135deg,#141726,#1c2033);
-  }
-  .compare-after{background:linear-gradient(135deg,#1a2f30,#132029);}
-  .compare-before{overflow:hidden;}
-  .compare-tag{
-    position:absolute;top:14px;font-size:.7rem;font-weight:800;
-    letter-spacing:.08em;text-transform:uppercase;
-    background:rgba(0,0,0,.55);padding:6px 12px;border-radius:999px;
-  }
-  .compare-tag.tag-before{left:14px;}
-  .compare-tag.tag-after{right:14px;}
-  .compare-placeholder-icon{width:44px;height:44px;color:var(--text-dimmer);opacity:.6;}
-  .compare-placeholder-text{color:var(--text-dimmer);font-size:.8rem;font-weight:600;text-align:center;padding:0 30px;}
-  .compare-handle{
-    position:absolute;top:0;bottom:0;
-    width:3px;background:#fff;
-    box-shadow:0 0 0 1px rgba(0,0,0,.3);
-    left:50%;
-    transform:translateX(-50%);
-  }
-  .compare-handle::after{
-    content:"";
-    position:absolute;top:50%;left:50%;
-    width:44px;height:44px;
-    transform:translate(-50%,-50%);
-    background:#fff;border-radius:50%;
-    box-shadow:0 4px 14px rgba(0,0,0,.35);
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='8 4 2 12 8 20'/%3E%3Cpolyline points='16 4 22 12 16 20'/%3E%3C/svg%3E");
-    background-repeat:no-repeat;background-position:center;background-size:20px;
-  }
-
-  /* ---------- Packages ---------- */
-  .tier-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
-  }
-  @media (max-width:900px){ .tier-grid{grid-template-columns:1fr;max-width:440px;margin:0 auto;} }
-  .tier-card{
-    background:var(--bg-elev);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    overflow:hidden;
-    display:flex;flex-direction:column;
-    position:relative;
-  }
-  .tier-card.popular{border-color:var(--purple);}
-  .popular-flag{
-    position:absolute;top:0;left:0;right:0;
-    text-align:center;
-    background:var(--grad);
-    color:#05060a;font-weight:800;font-size:.72rem;
-    letter-spacing:.06em;text-transform:uppercase;
-    padding:6px;
-  }
-  .tier-head{padding:26px 24px 20px;color:#0c0a06;}
-  .tier-card.popular .tier-head{padding-top:38px;}
-  .tier-head.bronze{background:linear-gradient(135deg,var(--bronze-a),var(--bronze-b));}
-  .tier-head.silver{background:linear-gradient(135deg,var(--silver-a),var(--silver-b));}
-  .tier-head.gold{background:linear-gradient(135deg,var(--goldtier-a),var(--goldtier-b));}
-  .tier-kicker{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.75;}
-  .tier-name{font-family:'Sora';font-size:1.7rem;font-weight:800;margin:2px 0 6px;}
-  .tier-price{font-size:1.6rem;font-weight:800;}
-  .tier-price small{font-size:.85rem;font-weight:600;opacity:.75;}
-  .tier-tagline{font-size:.86rem;font-weight:600;margin-top:4px;opacity:.85;}
-  .tier-body{padding:22px 24px 26px;display:flex;flex-direction:column;flex:1;}
-  .tier-icons{display:flex;gap:16px;margin-bottom:16px;}
-  .tier-icons span{
-    display:flex;align-items:center;gap:6px;font-size:.76rem;color:var(--text-dimmer);font-weight:600;
-  }
-  .tier-icons svg{width:16px;height:16px;color:var(--teal);}
-  .tier-list{list-style:none;margin:0 0 22px;padding:0;flex:1;}
-  .tier-list li{
-    display:flex;gap:10px;
-    font-size:.88rem;color:var(--text-dim);
-    padding:8px 0;border-top:1px solid var(--line);
-  }
-  .tier-list li:first-child{border-top:none;}
-  .tier-list svg{width:16px;height:16px;flex-shrink:0;margin-top:2px;color:var(--teal);}
-
-  /* ---------- Finance strip ---------- */
-  .finance-strip{
-    background:var(--bg-elev);
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:26px 28px;
-    margin-top:36px;
-    display:flex;align-items:center;gap:22px;flex-wrap:wrap;
-  }
-  .finance-strip .apr{
-    font-family:'Sora';font-weight:800;font-size:1.4rem;
-    background:var(--gold);color:#241900;
-    padding:10px 16px;border-radius:12px;line-height:1.1;text-align:center;flex-shrink:0;
-  }
-  .finance-strip .apr small{display:block;font-size:.6rem;font-weight:700;letter-spacing:.04em;}
-  .finance-strip p{margin:0;color:var(--text-dim);font-size:.92rem;flex:1;min-width:220px;}
-  details.terms{width:100%;margin-top:4px;}
-  details.terms summary{
-    cursor:pointer;color:var(--text-dimmer);font-size:.8rem;font-weight:600;
-    list-style:none;display:flex;align-items:center;gap:6px;
-  }
-  details.terms summary::-webkit-details-marker{display:none;}
-  details.terms summary::before{content:"+";font-weight:800;color:var(--teal);}
-  details.terms[open] summary::before{content:"–";}
-  details.terms .terms-body{
-    font-size:.78rem;color:var(--text-dimmer);margin-top:10px;line-height:1.6;
-  }
-
-  /* ---------- Valeting ---------- */
-  .valet-grid{
-    display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
-  }
-  @media (max-width:900px){ .valet-grid{grid-template-columns:1fr 1fr;} }
-  @media (max-width:520px){ .valet-grid{grid-template-columns:1fr;} }
-  .valet-card{
-    background:var(--bg-elev);border:1px solid var(--line);border-radius:var(--radius-sm);
-    padding:20px;
-  }
-  .valet-kicker{font-size:.7rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);}
-  .valet-name{font-family:'Sora';font-size:1.15rem;font-weight:700;margin:6px 0 2px;}
-  .valet-price{font-weight:800;color:var(--text);margin-bottom:10px;}
-  .valet-desc{font-size:.84rem;color:var(--text-dim);margin:0;}
-
-  /* ---------- Visit / CTA ---------- */
-  .visit{
-    background:var(--bg-elev);
-    border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
-  }
-  .visit-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:start;}
-  @media (max-width:860px){ .visit-grid{grid-template-columns:1fr;} }
-  .visit h2{font-size:clamp(1.6rem,4vw,2.2rem);}
-  .visit p{color:var(--text-dim);}
-  .visit-card{
-    background:var(--bg-elev-2);border:1px solid var(--line);border-radius:var(--radius);
-    padding:26px;
-  }
-  .visit-row{display:flex;gap:14px;padding:14px 0;border-top:1px solid var(--line);}
-  .visit-row:first-child{border-top:none;padding-top:0;}
-  .visit-row svg{width:20px;height:20px;color:var(--teal);flex-shrink:0;margin-top:2px;}
-  .visit-row .label{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dimmer);font-weight:700;margin-bottom:2px;}
-  .visit-row .value{font-size:.95rem;color:var(--text);}
-  .visit-card .btn{margin-top:18px;}
-  .hours-flag{
-    font-size:.74rem;color:var(--gold);margin-top:4px;
-  }
-
-  /* ---------- Footer ---------- */
-  footer{padding:56px 0 32px;}
-  .footer-grid{
-    display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;margin-bottom:40px;
-  }
-  @media (max-width:760px){ .footer-grid{grid-template-columns:1fr;gap:32px;} }
-  .footer-brand{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
-  .footer-brand img{width:36px;height:36px;}
-  .footer-brand span{font-family:'Sora';font-weight:700;}
-  footer p{color:var(--text-dimmer);font-size:.88rem;}
-  .footer-col h4{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);margin:0 0 14px;}
-  .footer-col a{display:block;color:var(--text-dimmer);font-size:.88rem;margin-bottom:10px;}
-  .footer-col a:hover{color:var(--text);}
-  .footer-badges{display:flex;gap:24px;flex-wrap:wrap;padding:28px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:24px;}
-  .footer-badge{display:flex;align-items:center;gap:10px;}
-  .footer-badge svg{width:22px;height:22px;color:var(--teal);flex-shrink:0;}
-  .footer-badge .t1{font-size:.85rem;font-weight:700;color:var(--text);}
-  .footer-badge .t2{font-size:.76rem;color:var(--text-dimmer);}
-  .copyright{color:var(--text-dimmer);font-size:.8rem;text-align:center;}
-
-  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
-  .reveal.in{opacity:1;transform:none;}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Auto Studio | Premium Paint Correction & Ceramic Coatings</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://tailwindcss.com"></script>
+    <!-- Google Fonts: Montserrat for headings, Inter for body text -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0A0A0C;
+        }
+        .heading-font {
+            font-family: 'Montserrat', sans-serif;
+        }
+        /* Custom Neon Blue Glow Effect */
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+        }
+        .neon-text-glow {
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+        }
+        /* Custom Glassmorphism style */
+        .glass-card {
+            background: rgba(18, 18, 20, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glass-card:hover {
+            border-color: rgba(0, 229, 255, 0.3);
+        }
+    </style>
 </head>
-<body>
+<body class="text-gray-300 antialiased selection:bg-cyan-500 selection:text-black">
 
-<!-- ===================== HEADER ===================== -->
-<header>
-  <nav class="nav">
-    <a href="#top" class="brand">
-      <img src="assets/logo-96.png" alt="DetailingNI logo">
-      <span>
-        <span class="brand-name" style="display:block;">DetailingNI</span>
-        <span class="brand-tag">The Standard For Perfection</span>
-      </span>
-    </a>
-    <div class="nav-links">
-      <a href="#packages">Packages</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#visit">Contact</a>
-    </div>
-    <div class="nav-cta" style="display:flex;align-items:center;gap:10px;">
-      <a class="btn btn-secondary btn-sm" href="tel:07721326149">Call</a>
-      <a class="btn btn-primary btn-sm" href="https://wa.me/447721326149?text=Hi%20DetailingNI%2C%20I%27d%20like%20to%20book%20a%20free%2010-min%20paint%20check" target="_blank" rel="noopener">WhatsApp</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
-    </div>
-  </nav>
-  <div class="mobile-panel" id="mobilePanel">
-    <a href="#packages">Packages</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#reviews">Reviews</a>
-    <a href="#visit">Contact</a>
-  </div>
-</header>
-
-<!-- ===================== HERO ===================== -->
-<div id="top"></div>
-<section class="hero">
-  <div class="wrap hero-inner">
-    <div class="eyebrow-row">
-      <span class="pill"><span class="dot"></span>Angelwax Certified Installer</span>
-      <span class="pill"><span class="dot"></span>Newtownards Detailing Studio</span>
-    </div>
-    <h1 class="hero-h1">Beyond A <span class="grad-text">Showroom Shine.</span></h1>
-    <p class="hero-sub">Ceramic coatings that last years, not weeks.</p>
-    <div class="hero-ctas">
-      <a class="btn btn-primary" href="https://wa.me/447721326149?text=Hi%20DetailingNI%2C%20I%27d%20like%20to%20book%20a%20free%2010-min%20paint%20check" target="_blank" rel="noopener">
-        Check My Paint — Free 10-Min Check
-      </a>
-      <a class="btn btn-secondary" href="#packages">See Coating Packages From £480</a>
-    </div>
-    <div>
-      <span class="finance-badge">⚡ 0% Finance — 3 Monthly Payments</span>
-    </div>
-    <div class="trust-row">
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>Fully Insured Studio</span>
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5L12 14.8 7.1 17.2l.9-5.5-4-3.9L9.5 7z"/></svg>Angelwax Certified Installer</span>
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>20+ Years Experience</span>
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20"/></svg>0% Finance Available</span>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== CRAFT / FOUNDER ===================== -->
-<section class="craft">
-  <div class="wrap craft-grid reveal">
-    <div>
-      <span class="eyebrow">Not Just A Business</span>
-      <h2>My Craft.</h2>
-      <p>From our custom-built, fully insured studio in Newtownards, I bring 20+ years of hands-on experience to every car.</p>
-      <p>As a Certified Angelwax Installer, I use professional-grade coatings you can't buy in shops — for a deeper gloss and protection that actually lasts.</p>
-    </div>
-    <blockquote>
-      "Every car that comes through our doors is treated exactly as if it were my own."
-      <cite>— Leslie Ross, Founder</cite>
-    </blockquote>
-  </div>
-</section>
-
-<!-- ===================== REVIEWS ===================== -->
-<section id="reviews">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Google Reviews</span>
-      <h2>What Newtownards Thinks.</h2>
-    </div>
-    <div class="review-grid reveal">
-      <div class="review-card">
-        <div class="review-top">
-          <div class="review-avatar">K</div>
-          <div>
-            <div class="review-name">Kyle Darley</div>
-            <div class="review-meta">Google Review</div>
-          </div>
+    <!-- Header Navigation -->
+    <header class="fixed top-0 w-full z-50 bg-[#0A0A0C]/80 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="heading-font text-xl font-black tracking-wider text-white">
+                APEX<span class="text-[#00E5FF] neon-text-glow">STUDIO</span>
+            </div>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium tracking-wide uppercase">
+                <a href="#services" class="hover:text-[#00E5FF] transition-colors">Services</a>
+                <a href="#transformation" class="hover:text-[#00E5FF] transition-colors">The Proof</a>
+                <a href="#about" class="hover:text-[#00E5FF] transition-colors">The Studio</a>
+            </nav>
+            <a href="#quote" class="bg-[#00E5FF] hover:bg-cyan-400 text-black font-semibold text-xs tracking-wider uppercase px-5 py-2.5 rounded-sm neon-glow transition-all">
+                Book Studio Time
+            </a>
         </div>
-        <div class="stars">★★★★★</div>
-        <p class="review-text">"Great quality job, car looked like it's just out of the showroom again! Friendly, professional and helpful in explaining all the stages involved to bring the paint work back to looking new again!"</p>
-        <div class="google-tag">via Google</div>
-      </div>
-      <div class="review-card">
-        <div class="review-top">
-          <div class="review-avatar">D</div>
-          <div>
-            <div class="review-name">DJDannyDee106</div>
-            <div class="review-meta">5 days ago · 3 reviews</div>
-          </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Background Asset: Replace with a dark, cinematic looping MP4 video link or high-res image -->
+        <div class="absolute inset-0 bg-[url('https://unsplash.com')] bg-cover bg-center mix-blend-luminosity opacity-20"></div>
+        <!-- Linear dark gradients over image -->
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0C] via-transparent to-[#0A0A0C]"></div>
+        
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+            <span class="text-xs font-bold tracking-[0.3em] uppercase text-[#00E5FF] mb-4 block">Elite Multi-Stage Paint Correction & Hydrophobic Protection</span>
+            <h1 class="heading-font text-5xl md:text-7xl font-black tracking-tight text-white mb-6 uppercase leading-tight">
+                The Ultimate Finish,<br>Permanently Locked In.
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                A fixed-location clinical clean bay dedicated to exotic paint restoration, optical clarity refinement, and permanent ceramic shielding coatings.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#quote" class="w-full sm:w-auto bg-[#00E5FF] hover:bg-cyan-400 text-black font-bold text-sm tracking-wider uppercase px-8 py-4 rounded-sm neon-glow transition-all">
+                    Request a Bespoke Quote
+                </a>
+                <a href="#services" class="w-full sm:w-auto bg-white/5 hover:bg-white/10 text-white font-semibold text-sm tracking-wider uppercase px-8 py-4 rounded-sm border border-white/10 transition-all">
+                    Explore Studio Tiers
+                </a>
+            </div>
         </div>
-        <div class="stars">★★★★★</div>
-        <p class="review-text">"Great service, good quality. Will use again :)"</p>
-        <div class="google-tag">via Google</div>
-      </div>
-      <div class="review-card">
-        <div class="review-top">
-          <div class="review-avatar">B</div>
-          <div>
-            <div class="review-name">Bob Young</div>
-            <div class="review-meta">4 weeks ago · 2 reviews</div>
-          </div>
+    </section>
+
+    <!-- Credibility Ribbon / Badges -->
+    <section class="border-y border-white/5 bg-[#0D0D11] py-8">
+        <div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-center items-center gap-12 opacity-40 grayscale contrast-200">
+            <span class="heading-font tracking-widest text-sm font-bold text-white">AUTHORIZED INSTALLER</span>
+            <span class="heading-font tracking-widest text-lg font-black text-white">XPEL</span>
+            <span class="heading-font tracking-widest text-lg font-black text-white">GTECHNIQ</span>
+            <span class="heading-font tracking-widest text-lg font-black text-white">CERAMIC PRO</span>
         </div>
-        <div class="stars">★★★★★</div>
-        <p class="review-text">"Top class work every time, wouldn't go anywhere else."</p>
-        <div class="google-tag">via Google</div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ===================== GALLERY ===================== -->
-<section id="gallery">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">See The Difference</span>
-      <h2>Drag To Compare.</h2>
-      <p>A real before &amp; after from the studio, side by side. Drag the slider to see the transformation.</p>
-    </div>
-
-    <!--
-      HOW TO ADD YOUR REAL PHOTO:
-      1. Add your two images to /assets/, e.g. assets/gallery-before.jpg and assets/gallery-after.jpg
-      2. Replace the two <div class="compare-before">/<div class="compare-after"> blocks below
-         with: <img src="assets/gallery-before.jpg" alt="Before ceramic coating">
-         (same for after). Remove the placeholder icon/text spans when you do.
-      3. You can duplicate this whole <div class="compare">...</div> block for more than one example.
-    -->
-    <div class="compare reveal" id="compareSlider">
-      <div class="compare-after">
-        <span class="compare-tag tag-after">After</span>
-        <svg class="compare-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l1.5 3.5L17 8l-3.5 1.5L12 13l-1.5-3.5L7 8l3.5-1.5z"/><circle cx="12" cy="17" r="4"/></svg>
-        <span class="compare-placeholder-text">Studio photos coming soon</span>
-      </div>
-      <div class="compare-before" id="compareBeforeMask">
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;">
-          <span class="compare-tag tag-before">Before</span>
-          <svg class="compare-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg>
-          <span class="compare-placeholder-text">Swap in your real before/after here</span>
+    <!-- Studio Tiers / Services -->
+    <section id="services" class="py-24 max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="heading-font text-3xl md:text-5xl font-black text-white uppercase tracking-tight">Studio Service Tiers</h2>
+            <p class="text-gray-500 mt-2">Meticulous craftsmanship for modern collectors and performance vehicles.</p>
         </div>
-      </div>
-      <div class="compare-handle" id="compareHandle"></div>
-    </div>
-    <p class="gallery-note reveal">This slider is fully working — it just needs real photos. Once the studio's finished, drop your before/after shots into <code>/assets/</code> and swap the two placeholder blocks in the code (instructions are in the HTML comment right above this section).</p>
-  </div>
-</section>
 
-<!-- ===================== PACKAGES ===================== -->
-<section id="packages" style="background:var(--bg-elev);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Ceramic Packages</span>
-      <h2>Lock In The Perfect Finish.</h2>
-      <p>No more waxing. Half the washing time.</p>
-    </div>
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Tier 1 -->
+            <div class="glass-card rounded-md p-8 transition-all flex flex-col justify-between">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-gray-500">Tier 01</span>
+                    <h3 class="heading-font text-2xl font-black text-white uppercase mt-2 mb-4">Paint Refinement</h3>
+                    <p class="text-sm text-gray-400 mb-8 leading-relaxed">Single-stage machine polish eliminating light swirl marks, oxidation, and hazy defects to restore deep gloss clarity across panels.</p>
+                </div>
+                <div>
+                    <div class="text-2xl heading-font font-black text-white mb-6">From £450</div>
+                    <a href="#quote" class="block text-center bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#00E5FF] text-white hover:text-[#00E5FF] text-xs font-bold tracking-wider uppercase py-3 rounded-sm transition-all">Select Package</a>
+                </div>
+            </div>
 
-    <div class="tier-grid reveal">
-      <!-- BRONZE -->
-      <div class="tier-card">
-        <div class="tier-head bronze">
-          <div class="tier-kicker">Entry Protection</div>
-          <div class="tier-name">Bronze</div>
-          <div class="tier-price">£480 <small>Inc VAT</small></div>
-          <div class="tier-tagline">Real gloss, real protection — without the big spend.</div>
+            <!-- Tier 2 (Highlighted) -->
+            <div class="glass-card rounded-md p-8 transition-all flex flex-col justify-between border-[#00E5FF]/30 relative neon-glow">
+                <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#00E5FF] text-black font-black text-[10px] tracking-widest uppercase px-3 py-1 rounded-full">Most Demanded</div>
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-[#00E5FF]">Tier 02</span>
+                    <h3 class="heading-font text-2xl font-black text-white uppercase mt-2 mb-4">The Multi-Stage Restor</h3>
+                    <p class="text-sm text-gray-300 mb-8 leading-relaxed">Multi-stage heavy compounding and micro-finishing steps. Eliminates deep paint scratches and holograms to yield a flawless mirrored reflection finish.</p>
+                </div>
+                <div>
+                    <div class="text-2xl heading-font font-black text-[#00E5FF] mb-6">From £850</div>
+                    <a href="#quote" class="block text-center bg-[#00E5FF] hover:bg-cyan-400 text-black text-xs font-bold tracking-wider uppercase py-3 rounded-sm transition-all">Select Package</a>
+                </div>
+            </div>
+
+            <!-- Tier 3 -->
+            <div class="glass-card rounded-md p-8 transition-all flex flex-col justify-between">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-gray-500">Tier 03</span>
+                    <h3 class="heading-font text-2xl font-black text-white uppercase mt-2 mb-4">Ceramic Shielding</h3>
+                    <p class="text-sm text-gray-400 mb-8 leading-relaxed">Multi-layer premium nanotechnology protective application coating. Complete hydrophobic defense against environmental elements for up to 9 years.</p>
+                </div>
+                <div>
+                    <div class="text-2xl heading-font font-black text-white mb-6">From £1,200</div>
+                    <a href="#quote" class="block text-center bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#00E5FF] text-white hover:text-[#00E5FF] text-xs font-bold tracking-wider uppercase py-3 rounded-sm transition-all">Select Package</a>
+                </div>
+            </div>
         </div>
-        <div class="tier-body">
-          <div class="tier-icons">
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18z"/><path d="M2 2l7.5 7.5"/></svg>Paint</span>
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M12 2v20"/><circle cx="12" cy="12" r="10"/></svg>Glass</span>
-          </div>
-          <ul class="tier-list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Deep clean that lifts the invisible road grime &amp; contamination a normal wash misses</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Machine polish for extra gloss</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>2-year ceramic coating on paint &amp; glass</li>
-          </ul>
-          <a class="btn btn-secondary btn-block" href="https://wa.me/447721326149?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Bronze%20package" target="_blank" rel="noopener">Book Bronze</a>
-        </div>
-      </div>
+    </section>
 
-      <!-- SILVER -->
-      <div class="tier-card popular">
-        <div class="popular-flag">Most Popular</div>
-        <div class="tier-head silver">
-          <div class="tier-kicker">Full Correction</div>
-          <div class="tier-name">Silver</div>
-          <div class="tier-price">£625 <small>Inc VAT</small></div>
-          <div class="tier-tagline">Removes swirls &amp; scratches for a flawless finish.</div>
-        </div>
-        <div class="tier-body">
-          <div class="tier-icons">
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18z"/><path d="M2 2l7.5 7.5"/></svg>Paint</span>
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M12 2v20"/><circle cx="12" cy="12" r="10"/></svg>Glass</span>
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.5"/><path d="M12 4v2M12 18v2M4 12h2M18 12h2"/></svg>Wheels</span>
-          </div>
-          <ul class="tier-list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Full 2-stage machine polish — removes swirls &amp; scratches most washes leave behind</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>5-year Angelwax professional ceramic coating</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Glass &amp; wheel faces ceramic coated</li>
-          </ul>
-          <a class="btn btn-primary btn-block" href="https://wa.me/447721326149?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Silver%20package" target="_blank" rel="noopener">Book Silver</a>
-        </div>
-      </div>
-
-      <!-- GOLD -->
-      <div class="tier-card">
-        <div class="tier-head gold">
-          <div class="tier-kicker">Our Hero Package</div>
-          <div class="tier-name">Gold</div>
-          <div class="tier-price">£950 <small>Inc VAT</small></div>
-          <div class="tier-tagline">Our glossiest, toughest, most extreme finish.</div>
-        </div>
-        <div class="tier-body">
-          <div class="tier-icons">
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18z"/><path d="M2 2l7.5 7.5"/></svg>Paint</span>
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M12 2v20"/><circle cx="12" cy="12" r="10"/></svg>Glass</span>
-            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2.5"/><path d="M12 4v2M12 18v2M4 12h2M18 12h2"/></svg>Wheels</span>
-          </div>
-          <ul class="tier-list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Full paint correction — removes as many marks &amp; swirls as safely possible</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>5-year Angelwax graphene ceramic coating for maximum gloss &amp; protection</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Glass &amp; wheel faces ceramic coated</li>
-          </ul>
-          <a class="btn btn-secondary btn-block" href="https://wa.me/447721326149?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Gold%20package" target="_blank" rel="noopener">Book Gold</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="finance-strip reveal">
-      <div class="apr">0%<small>APR</small></div>
-      <p>Spread the cost with Payment Assist — pay over 3 months, no hidden fees. Just ask in the studio.</p>
-      <details class="terms">
-        <summary>Terms &amp; conditions</summary>
-        <div class="terms-body">
-          A £100 surcharge applies to larger vehicles (SUVs, 4x4s, vans) for Signature Details. 0% finance available via Payment Assist, subject to status. Terms apply.
-        </div>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== VALETING ===================== -->
-<section>
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Valeting &amp; Maintenance</span>
-      <h2>Keep It Showroom Fresh.</h2>
-      <p>Between coatings. Prices from — final cost depends on vehicle size &amp; condition.</p>
-    </div>
-    <div class="valet-grid reveal">
-      <div class="valet-card">
-        <div class="valet-kicker">Essential</div>
-        <div class="valet-name">Standard Valet</div>
-        <div class="valet-price">From £60</div>
-        <p class="valet-desc">Safe multi-stage wash, full interior vacuum &amp; wipe down.</p>
-      </div>
-      <div class="valet-card">
-        <div class="valet-kicker">Exterior Boost</div>
-        <div class="valet-name">Premium Valet</div>
-        <div class="valet-price">From £85</div>
-        <p class="valet-desc">Standard Valet plus tar removal &amp; a ceramic top-up spray for extra gloss &amp; beading.</p>
-      </div>
-      <div class="valet-card">
-        <div class="valet-kicker">Interior Focus</div>
-        <div class="valet-name">Executive Valet</div>
-        <div class="valet-price">From £110</div>
-        <p class="valet-desc">Standard Valet plus a deep steam clean &amp; conditioning for fabric, leather &amp; plastics.</p>
-      </div>
-      <div class="valet-card">
-        <div class="valet-kicker">The Full Reset</div>
-        <div class="valet-name">Ultimate Valet</div>
-        <div class="valet-price">From £170</div>
-        <p class="valet-desc">Complete exterior decontamination &amp; full interior restoration.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== VISIT / CTA ===================== -->
-<section class="visit" id="visit">
-  <div class="wrap visit-grid">
-    <div class="reveal">
-      <span class="eyebrow">Visit The Studio</span>
-      <h2>See What Your Paint Could Really Look Like.</h2>
-      <p>Book a free 10-minute paint inspection in our custom-built studio. We'll evaluate your car with you, right there, under our dedicated double-bay light tunnel and custom hexagonal LED lighting, grab a fresh bean-to-cup espresso, and show you exactly what's possible — no pressure to book.</p>
-      <a class="btn btn-primary" href="https://wa.me/447721326149?text=Hi%20DetailingNI%2C%20I%27d%20like%20to%20book%20a%20free%2010-min%20paint%20check" target="_blank" rel="noopener">Check My Paint — Free 10-Min Check</a>
-    </div>
-    <div class="visit-card reveal">
-      <div class="visit-row">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-7.5 8-13a8 8 0 10-16 0c0 5.5 8 13 8 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
-        <div><div class="label">Visit Us</div><div class="value">129 Quarry Heights<br>Newtownards, BT23 7SZ</div></div>
-      </div>
-      <div class="visit-row">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.68 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0122 16.92z"/></svg>
-        <div><div class="label">Call or WhatsApp</div><div class="value">07721 326149</div></div>
-      </div>
-      <div class="visit-row">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-        <div>
-          <div class="label">Studio Hours</div>
-          <div class="value">Mon–Fri: 9am–5:30pm<br>Sat: By appointment · Sun: Closed</div>
-          <div class="hours-flag">⚠ Confirm these — the old site listed two different sets of hours.</div>
-        </div>
-      </div>
-      <a class="btn btn-secondary btn-block" href="https://www.detailingni.co.uk" target="_blank" rel="noopener">www.detailingni.co.uk</a>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== FOOTER ===================== -->
-<footer>
-  <div class="wrap">
-    <div class="footer-badges reveal">
-      <div class="footer-badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
-        <div><div class="t1">Fully Insured</div><div class="t2">Professional Studio</div></div>
-      </div>
-      <div class="footer-badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5L12 14.8 7.1 17.2l.9-5.5-4-3.9L9.5 7z"/></svg>
-        <div><div class="t1">Angelwax Certified</div><div class="t2">Professional Installer</div></div>
-      </div>
-      <div class="footer-badge">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-7.5 8-13a8 8 0 10-16 0c0 5.5 8 13 8 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
-        <div><div class="t1">Proudly Serving</div><div class="t2">Bangor, Belfast &amp; County Down</div></div>
-      </div>
-    </div>
-
-    <div class="footer-grid">
-      <div>
-        <div class="footer-brand">
-          <img src="assets/logo-96.png" alt="DetailingNI logo">
-          <span>DetailingNI</span>
-        </div>
-        <p>Premium ceramic coating &amp; valeting studio in Newtownards. The standard for perfection.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Site</h4>
-        <a href="#packages">Packages</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#visit">Contact</a>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <a href="tel:07721326149">07721 326149</a>
-        <a href="https://wa.me/447721326149" target="_blank" rel="noopener">WhatsApp Us</a>
-        <a href="https://www.detailingni.co.uk" target="_blank" rel="noopener">detailingni.co.uk</a>
-      </div>
-    </div>
-    <p class="copyright">© 2026 DetailingNI. All rights reserved.</p>
-  </div>
-</footer>
-
-<!-- ===================== MOBILE STICKY BAR ===================== -->
-<div class="mobile-bar">
-  <a class="wa" href="https://wa.me/447721326149?text=Hi%20DetailingNI%2C%20I%27d%20like%20to%20book%20a%20free%2010-min%20paint%20check" target="_blank" rel="noopener">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 004.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.13a8.2 8.2 0 01-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 01-1.26-4.36c0-4.54 3.7-8.24 8.26-8.24 4.55 0 8.25 3.7 8.25 8.24 0 4.55-3.7 8.22-8.26 8.22z"/></svg>
-    WhatsApp
-  </a>
-  <a class="call" href="tel:07721326149">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.68 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0122 16.92z"/></svg>
-    Call
-  </a>
-</div>
-
-<script>
-  // Mobile nav toggle
-  const navToggle = document.getElementById('navToggle');
-  const mobilePanel = document.getElementById('mobilePanel');
-  navToggle.addEventListener('click', () => {
-    const open = mobilePanel.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', open);
-  });
-  mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    mobilePanel.classList.remove('open');
-    navToggle.setAttribute('aria-expanded', false);
-  }));
-
-  // Before/after compare slider
-  (function(){
-    const compare = document.getElementById('compareSlider');
-    const beforeMask = document.getElementById('compareBeforeMask');
-    const handle = document.getElementById('compareHandle');
-    let dragging = false;
-
-    function setPosition(x){
-      const rect = compare.getBoundingClientRect();
-      let pct = ((x - rect.left) / rect.width) * 100;
-      pct = Math.max(4, Math.min(96, pct));
-      beforeMask.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
-      handle.style.left = pct + '%';
-    }
-    setPosition(compare.getBoundingClientRect().left + compare.getBoundingClientRect().width / 2);
-
-    function start(e){ dragging = true; move(e); }
-    function move(e){
-      if(!dragging) return;
-      const x = e.touches ? e.touches[0].clientX : e.clientX;
-      setPosition(x);
-    }
-    function end(){ dragging = false; }
-
-    compare.addEventListener('mousedown', start);
-    window.addEventListener('mousemove', move);
-    window.addEventListener('mouseup', end);
-    compare.addEventListener('touchstart', start, {passive:true});
-    window.addEventListener('touchmove', move, {passive:true});
-    window.addEventListener('touchend', end);
-  })();
-
-  // Scroll reveal
-  if('IntersectionObserver' in window){
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
-    }, {threshold:.12});
-    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-  } else {
-    document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
-  }
-</script>
-</body>
-</html>
+    <!-- Before / After Transformation Layout Showcase -->
+    <section id="transformation" class="py-20 bg-[#0D0D11] border-y border-white/5">
+        <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-[#00E5FF]">Optical Restoration Proof</span>
+                <h2 class="heading-font text-3xl md:text-4xl font-black text-white uppercase mt-2 mb-6">Flawless Scratch Elimination</h2>
+                <p class="text-gray-400 mb-6 leading-relaxed">We operate highly precise LED array tracking lamps to highlight microscopic clear coat scratches. Our multi-stage compounding permanently removes surface defects rather than just temporarily masking them behind quick fillers.</p>
+                <div class="flex items-center space-x-4 text-sm font-semibold text-white">
