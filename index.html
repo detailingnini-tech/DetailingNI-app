@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Detailing NI | Beyond A Showroom Shine</title>
+  <meta name="description" content="Certified Angelwax Installer in Newtownards. Ceramic coatings, graphene protection, and precision valeting packages.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-dark: #0A0F1D;
+      --surface-dark: #121A2F;
+      --surface-elevated: #1A243F;
+      --surface-card: #141E36;
+      --border-color: #233055;
+      --cyan-accent: #00E5FF;
+      --cyan-glow: rgba(0, 229, 255, 0.15);
+      --gold-accent: #FFB800;
+      --gold-glow: rgba(255, 184, 0, 0.15);
+      --text-primary: #FFFFFF;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+      --green-whatsapp: #25D366;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-primary);
+      line-height: 1.5;
+      padding-bottom: 85px;
+      min-height: 100vh;
+    }
+
+    /* Container */
+    .app-container {
+      max-width: 600px;
+      margin: 0 auto;
+      min-height: 100vh;
+      background: var(--bg-dark);
+      position: relative;
+    }
+
+    /* Header */
+    header {
+      background: rgba(18, 26, 47, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border-color);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-logo-text {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-emblem {
+      width: 36px;
+      height: 36px;
+      background: radial-gradient(circle, var(--cyan-accent) 0%, #007799 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #000;
+      font-size: 14px;
+      box-shadow: 0 0 10px var(--cyan-glow);
+    }
+
+    .brand-title {
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-subtitle {
+      font-size: 11px;
+      color: var(--cyan-accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .quick-cta {
+      background: var(--cyan-accent);
+      color: #000;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 12px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Views */
+    .view-section {
+      display: none;
+      padding: 16px;
+      animation: fadeIn 0.25s ease-out forwards;
+    }
+
+    .view-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      background: linear-gradient(180deg, var(--surface-elevated) 0%, var(--surface-dark) 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 24px 20px;
+      text-align: center;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-banner::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, var(--cyan-glow) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: rgba(0, 229, 255, 0.1);
+      border: 1px solid rgba(0, 229, 255, 0.3);
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--cyan-accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .hero-title span {
+      color: var(--cyan-accent);
+    }
+
+    .hero-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 18px;
+    }
+
+    /* Cards & Containers */
+    .info-card {
+      background: var(--surface-dark);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+
+    .info-card.hero-gold {
+      border-color: rgba(255, 184, 0, 0.4);
+      background: linear-gradient(180deg, rgba(255, 184, 0, 0.05) 0%, var(--surface-dark) 100%);
+    }
+
+    .card-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--cyan-accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .card-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .quote-box {
+      background: var(--surface-elevated);
+      border-left: 3px solid var(--cyan-accent);
+      padding: 12px 14px;
+      border-radius: 0 10px 10px 0;
+      margin-top: 12px;
+      font-style: italic;
+      font-size: 13px;
+    }
+
+    .quote-author {
+      font-style: normal;
+      font-weight: 700;
+      color: var(--cyan-accent);
+      font-size: 11px;
+      margin-top: 4px;
+      text-align: right;
+    }
+
+    /* Grid Pillars */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .pillar-item {
+      background: var(--surface-dark);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .pillar-icon {
+      font-size: 20px;
+      margin-bottom: 6px;
+      display: inline-block;
+    }
+
+    .pillar-title {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .pillar-sub {
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    /* Pricing & Service Packages */
+    .section-title-wrap {
+      margin-bottom: 16px;
+    }
+
+    .section-headline {
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .section-subline {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .package-card {
+      background: var(--surface-dark);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .package-card.highlight {
+      border-color: var(--cyan-accent);
+      box-shadow: 0 0 15px var(--cyan-glow);
+    }
+
+    .package-card.gold-highlight {
+      border-color: var(--gold-accent);
+      box-shadow: 0 0 15px var(--gold-glow);
+    }
+
+    .package-badge-tag {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .tag-popular {
+      background: var(--cyan-accent);
+      color: #000;
+    }
+
+    .tag-hero {
+      background: var(--gold-accent);
+      color: #000;
+    }
+
+    .package-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+      padding-right: 70px;
+    }
+
+    .package-name {
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .package-price {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    .package-price-sub {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .package-chips {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      background: var(--surface-elevated);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--cyan-accent);
+    }
+
+    .feature-list {
+      list-style: none;
+      margin-bottom: 14px;
+    }
+
+    .feature-list li {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .feature-list li::before {
+      content: "✓";
+      color: var(--cyan-accent);
+      font-weight: 800;
+    }
+
+    .package-btn {
+      width: 100%;
+      background: var(--surface-elevated);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+      padding: 10px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: 0.2s;
+    }
+
+    .package-btn:hover {
+      border-color: var(--cyan-accent);
+      color: var(--cyan-accent);
+    }
+
+    .notice-box {
+      background: rgba(255, 184, 0, 0.08);
+      border: 1px solid rgba(255, 184, 0, 0.25);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 12px;
+      color: #E2E8F0;
+      margin-bottom: 16px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .gallery-card {
+      background: var(--surface-dark);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .gallery-placeholder {
+      height: 180px;
+      background: linear-gradient(45deg, #16203a, #0c1424);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border-color);
+      position: relative;
+    }
+
+    .gallery-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--cyan-accent);
+    }
+
+    .gallery-desc {
+      padding: 12px;
+    }
+
+    .gallery-desc h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .gallery-desc p {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    /* Contact Screen & Form */
+    .contact-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .action-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-whatsapp {
+      background: var(--green-whatsapp);
+      color: #FFFFFF;
+    }
+
+    .btn-call {
+      background: var(--cyan-accent);
+      color: #000000;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+
+    .form-control {
+      width: 100%;
+      background: var(--surface-elevated);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 12px;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 14px;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--cyan-accent);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .submit-quote-btn {
+      width: 100%;
+      background: var(--cyan-accent);
+      color: #000;
+      border: none;
+      padding: 14px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 14px;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    /* Review Stars */
+    .stars {
+      color: var(--gold-accent);
+      letter-spacing: 2px;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    /* Bottom Navigation */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(14, 20, 37, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-around;
+      padding: 8px 0 10px 0;
+      max-width: 600px;
+      margin: 0 auto;
+      z-index: 100;
+    }
+
+    .nav-tab {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: 600;
+      gap: 3px;
+      width: 25%;
+      transition: color 0.2s;
+    }
+
+    .nav-tab svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .nav-tab.active {
+      color: var(--cyan-accent);
+    }
+
+    .nav-tab.active svg {
+      fill: var(--cyan-accent);
+    }
+  </style>
+</head>
+<body>
+
+<div class="app-container">
+  <!-- Top Bar -->
+  <header>
+    <div class="brand-logo-text">
+      <div class="brand-emblem">DNI</div>
+      <div>
+        <div class="brand-title">Detailing NI</div>
+        <div class="brand-subtitle">Angelwax Certified Studio</div>
+      </div>
+    </div>
+    <button class="quick-cta" onclick="switchTab('contact')">
+      <span>Contact to Book</span>
+    </button>
+  </header>
+
+  <!-- TAB 1: HOME -->
+  <main id="view-home" class="view-section active">
+    <div class="hero-banner">
+      <div class="hero-badge">Newtownards Studio</div>
+      <h1 class="hero-title">Beyond A <span>Showroom Shine.</span></h1>
+      <p class="hero-desc">Ceramic coatings that last years, not weeks. Fully insured studio with 20+ years of craft.</p>
+      <button class="action-btn btn-call" style="width: 100%;" onclick="switchTab('contact')">
+        Book Free 10-Min Paint Inspection
+      </button>
+    </div>
+
+    <!-- About Section -->
+    <div class="info-card">
+      <div class="card-label">The Detailing NI Standard</div>
+      <h2 class="card-title">Not Just A Business. My Craft.</h2>
+      <p class="card-text">
+        From our custom-built, fully insured studio in Newtownards, I bring 20+ years of hands-on experience to every car. As a Certified Angelwax installer, I use professional-grade coatings you can't buy in shops — for a deeper gloss and protection that actually lasts.
+      </p>
+      <div class="quote-box">
+        “Every car that comes through our doors is treated exactly as if it were my own.”
+        <div class="quote-author">— Leslie Ross, Founder</div>
+      </div>
+    </div>
+
+    <!-- Pillars -->
+    <div class="pillars-grid">
+      <div class="pillar-item">
+        <div class="pillar-icon">🛡️</div>
+        <div class="pillar-title">Fully Insured</div>
+        <div class="pillar-sub">Custom studio in Newtownards</div>
+      </div>
+      <div class="pillar-item">
+        <div class="pillar-icon">🏆</div>
+        <div class="pillar-title">Angelwax Certified</div>
+        <div class="pillar-sub">Accredited ceramic installer</div>
+      </div>
+      <div class="pillar-item">
+        <div class="pillar-icon">💡</div>
+        <div class="pillar-title">Light Tunnel Bay</div>
+        <div class="pillar-sub">Hexagonal inspection LEDs</div>
+      </div>
+      <div class="pillar-item">
+        <div class="pillar-icon">💳</div>
+        <div class="pillar-title">0% Finance</div>
+        <div class="pillar-sub">Spread over 3 monthly payments</div>
+      </div>
+    </div>
+
+    <!-- Free Inspection Invite -->
+    <div class="info-card">
+      <div class="card-label">Visit The Studio</div>
+      <h2 class="card-title">See What Your Paint Could Look Like</h2>
+      <p class="card-text">
+        Book a free 10-minute paint inspection. We'll evaluate your car under our dedicated double-bay light tunnel and custom hexagonal LED lighting, grab a fresh espresso, and show you exactly what's possible on video — no pressure to book.
+      </p>
+      <button class="package-btn" style="margin-top: 12px;" onclick="switchTab('contact')">
+        Arrange Free Studio Inspection →
+      </button>
+    </div>
+
+    <!-- Review -->
+    <div class="info-card">
+      <div class="stars">★★★★★</div>
+      <div class="card-label" style="color: var(--gold-accent);">Google Verified Review</div>
+      <p class="card-text" style="font-style: italic; margin-top: 4px;">
+        “Great quality job, car looked like it's just out of the show room again! Friendly, professional and helpful in explaining all the stages involved to bring the paint work back to looking new again!”
+      </p>
+      <div style="font-size: 11px; font-weight: 700; color: #FFF; margin-top: 6px;">— Kyle Darley</div>
+    </div>
+  </main>
+
+  <!-- TAB 2: SERVICES -->
+  <main id="view-services" class="view-section">
+    <div class="section-title-wrap">
+      <div class="card-label">Ceramic Coating Packages</div>
+      <h2 class="section-headline">Lock In The Perfect Finish</h2>
+      <p class="section-subline">No more waxing. Half the washing time.</p>
+    </div>
+
+    <!-- Gold Hero Package -->
+    <div class="package-card gold-highlight">
+      <div class="package-badge-tag tag-hero">Our Hero Package</div>
+      <div class="package-header">
+        <div>
+          <div class="package-name">Gold Graphene</div>
+          <div class="package-chips">
+            <span class="chip">Paint</span>
+            <span class="chip">Glass</span>
+            <span class="chip">Wheels</span>
+          </div>
+        </div>
+        <div style="text-align: right;">
+          <div class="package-price">£950</div>
+          <div class="package-price-sub">Inc. VAT</div>
+        </div>
+      </div>
+      <p class="card-text" style="margin-bottom: 10px;">Our glossiest, toughest, most extreme finish.</p>
+      <ul class="feature-list">
+        <li>Full multi-stage paint correction to remove all safe defects</li>
+        <li>5-year Angelwax NEBULA Graphene coating application</li>
+        <li>Maximum chemical resistance, extreme slickness & water beading</li>
+      </ul>
+      <button class="package-btn" onclick="selectServiceAndContact('Gold Graphene (£950)')">Contact to Book Gold →</button>
+    </div>
+
+    <!-- Silver Package -->
+    <div class="package-card highlight">
+      <div class="package-badge-tag tag-popular">Most Popular</div>
+      <div class="package-header">
+        <div>
+          <div class="package-name">Silver Ceramic</div>
+          <div class="package-chips">
+            <span class="chip">Paint</span>
+            <span class="chip">Glass</span>
+            <span class="chip">Wheels</span>
+          </div>
+        </div>
+        <div style="text-align: right;">
+          <div class="package-price">£625</div>
+          <div class="package-price-sub">Inc. VAT</div>
+        </div>
+      </div>
+      <p class="card-text" style="margin-bottom: 10px;">Full swirl & scratch removal for a flawless finish.</p>
+      <ul class="feature-list">
+        <li>2-stage machine correction to remove heavy swirl marks</li>
+        <li>5-year Angelwax professional ceramic coating</li>
+        <li>Glass and wheel face protection included</li>
+      </ul>
+      <button class="package-btn" onclick="selectServiceAndContact('Silver Ceramic (£625)')">Contact to Book Silver →</button>
+    </div>
+
+    <!-- Bronze Package -->
+    <div class="package-card">
+      <div class="package-header">
+        <div>
+          <div class="package-name">Bronze Ceramic</div>
+          <div class="package-chips">
+            <span class="chip">Paint</span>
+            <span class="chip">Glass</span>
+          </div>
+        </div>
+        <div style="text-align: right;">
+          <div class="package-price">£480</div>
+          <div class="package-price-sub">Inc. VAT</div>
+        </div>
+      </div>
+      <p class="card-text" style="margin-bottom: 10px;">Entry-level ceramic protection with real gloss.</p>
+      <ul class="feature-list">
+        <li>Deep chemical cleanse to remove invisible road grime & fallout</li>
+        <li>Single-stage gloss-enhancing machine polish</li>
+        <li>2-year Angelwax ceramic coating on paint & glass</li>
+      </ul>
+      <button class="package-btn" onclick="selectServiceAndContact('Bronze Ceramic (£480)')">Contact to Book Bronze →</button>
+    </div>
+
+    <!-- Surcharge Notice -->
+    <div class="notice-box">
+      <span>ℹ️</span>
+      <div>
+        <strong>Size & Condition Note:</strong> Final price may vary based on vehicle condition. A £100 surcharge applies to larger vehicles (SUVs, 4x4s, vans) for ceramic details.
+      </div>
+    </div>
+
+    <!-- Valeting & Maintenance Section -->
+    <div class="section-title-wrap" style="margin-top: 24px;">
+      <div class="card-label">Valeting & Maintenance</div>
+      <h2 class="section-headline">Keep It Showroom Fresh</h2>
+      <p class="section-subline">Precision detailing between coatings.</p>
+    </div>
+
+    <!-- Standard Valet -->
+    <div class="package-card">
+      <div class="package-header">
+        <div>
+          <div class="package-name">Standard Valet</div>
+          <div class="package-chips"><span class="chip">Safe Wash</span><span class="chip">Vacuum</span></div>
+        </div>
+        <div style="text-align: right;">
+          <div class="package-price" style="font-size: 18px;">From £60</div>
+        </div>
+      </div>
+      <ul class="feature-list">
+        <li>Essential clean - safe multi-stage wash, full interior vacuum & wipe down.</li>
+      </ul>
+      <button class="package-btn" onclick="selectServiceAndContact('Standard Valet (From £60)')">Inquire for Standard Valet →</button>
+    </div>
+
+    <!-- Premium Valet -->
+    <div class="package-card">
+      <div class="package-header">
+        <div>
+          <div class="package-name">Premium Valet</div>
+          <div class="package-chips"><span class="chip">Decon</span><span class="chip">Gloss Boost</span></div>
+        </div>
+        <div style="text-align: right;">
+          <div class="package-price" style="font-size: 18px;">From £85</div>
+        </div>
+      </div>
+      <ul class="feature-list">
+        <li>Exterior boost - Standard Valet plus tar removal & ceramic top-up spray for extra gloss & beading.</li>
+      </ul>
+      <button class="package-btn" onclick="selectServiceAndContact('Premium Valet (From £85)')">Inquire for Premium Valet →</button>
+    </div>
+
+    <!-- Executive Valet -->
+    <div class="package-card">
+      <div class="package-header">
+        <div>
+          <div class="package-name">Executive Valet</div>
+          <div class="package-chips"><span class="chip">Interior Deep Steam</span></div>
+        </div>
+        <div style="text-align: right;">
+          <div class="package-price" style="font-size: 18px;">From £110</div>
+        </div>
+      </div>
+      <ul class="feature-list">
+        <li>Interior focus - Standard Valet plus deep steam clean & conditioning for fabric, leather & plastics.</li>
+      </ul>
+      <button class="package-btn" onclick="selectServiceAndContact('Executive Valet (From £110)')">Inquire for Executive Valet →</button>
+    </div>
+
+    <!-- Ultimate Valet -->
+    <div class="package-card">
+      <div class="package-header">
+        <div>
+          <div class="package-name">Ultimate Valet</div>
+          <div class="package-chips"><span class="chip">Full Reset</span><span class="chip">Interior & Exterior</span></div>
+        </div>
+        <div style="text-align: right;">
+          <div class="package-price" style="font-size: 18px;">From £170</div>
+        </div>
+      </div>
+      <ul class="feature-list">
+        <li>The full reset - complete exterior decontamination & full interior restoration.</li>
+      </ul>
+      <button class="package-btn" onclick="selectServiceAndContact('Ultimate Valet (From £170)')">Inquire for Ultimate Valet →</button>
+    </div>
+  </main>
+
+  <!-- TAB 3: GALLERY -->
+  <main id="view-gallery" class="view-section">
+    <div class="section-title-wrap">
+      <div class="card-label">Showcase Gallery</div>
+      <h2 class="section-headline">Our Studio Results</h2>
+      <p class="section-subline">Flawless paint correction and ceramic protection.</p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-card">
+        <div class="gallery-placeholder">
+          <div class="gallery-badge">50/50 Paint Correction</div>
+          <span style="font-size: 32px;">✨</span>
+          <span style="font-size: 12px; margin-top: 6px;">Swirl & Scratch Removal</span>
+        </div>
+        <div class="gallery-desc">
+          <h4>Multi-Stage Defect Removal</h4>
+          <p>Restoring deep optical clarity on soft and hard clear coats under high-intensity inspection lighting.</p>
+        </div>
+      </div>
+
+      <div class="gallery-card">
+        <div class="gallery-placeholder">
+          <div class="gallery-badge">Angelwax NEBULA Graphene</div>
+          <span style="font-size: 32px;">🛡️</span>
+          <span style="font-size: 12px; margin-top: 6px;">Extreme Water Beading</span>
+        </div>
+        <div class="gallery-desc">
+          <h4>Hydrophobic Ceramic & Graphene</h4>
+          <p>5-year accredited ceramic coatings resisting road salt, bird strikes, and acid rain.</p>
+        </div>
+      </div>
+
+      <div class="gallery-card">
+        <div class="gallery-placeholder">
+          <div class="gallery-badge">Interior Deep Reset</div>
+          <span style="font-size: 32px;">🧼</span>
+          <span style="font-size: 12px; margin-top: 6px;">Steam & Leather Treatment</span>
+        </div>
+        <div class="gallery-desc">
+          <h4>Executive Interior Restoration</h4>
+          <p>Deep fabric extraction, matte leather conditioning, and anti-bacterial steam cleaning.</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="action-btn btn-call" style="width: 100%;" onclick="switchTab('contact')">
+      Contact to Book Your Transformation
+    </button>
+  </main>
+
+  <!-- TAB 4: CONTACT -->
+  <main id="view-contact" class="view-section">
+    <div class="section-title-wrap">
+      <div class="card-label">Direct Contact & Booking</div>
+      <h2 class="section-headline">Get In Touch</h2>
+      <p class="section-subline">Fastest response via WhatsApp or Phone Call.</p>
+    </div>
+
+    <!-- Quick Direct CTA Links -->
+    <div class="contact-actions">
+      <a href="https://wa.me/447721326149?text=Hi%20Leslie,%20I'd%20like%20to%20inquire%20about%20detailing%20my%20car." target="_blank" class="action-btn btn-whatsapp">
+        <span>💬 Message Us On WhatsApp</span>
+      </a>
+      <a href="tel:07721326149" class="action-btn btn-call">
+        <span>📞 Tap to Call: 07721 326149</span>
+      </a>
+    </div>
+
+    <!-- Studio Details -->
+    <div class="info-card">
+      <div class="card-label">Studio Location</div>
+      <div style="font-size: 14px; font-weight: 700; margin-bottom: 2px;">129 Quarry Heights</div>
+      <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 8px;">Newtownards, BT23 7SZ</div>
+      <div style="font-size: 11px; color: var(--cyan-accent); font-weight: 600;">
+        Serving Bangor, Belfast & County Down
+      </div>
+    </div>
+
+    <!-- Contact Form (Sends Email) -->
+    <div class="info-card">
+      <div class="card-label">Send An Inquiry</div>
+      <h3 style="font-size: 16px; margin-bottom: 12px;">Get A Fast Quote</h3>
+      
+      <form id="inquiryForm" onsubmit="handleFormSubmit(event)">
+        <div class="form-group">
+          <label class="form-label" for="clientName">Your Name *</label>
+          <input type="text" id="clientName" class="form-control" placeholder="e.g. John Smith" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="clientPhone">Phone Number *</label>
+          <input type="tel" id="clientPhone" class="form-control" placeholder="e.g. 07700 900000" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="vehicleDetails">Vehicle Make, Model & Reg *</label>
+          <input type="text" id="vehicleDetails" class="form-control" placeholder="e.g. BMW M3 (2021) - AB21 CDE" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="packageSelect">Interested Package</label>
+          <select id="packageSelect" class="form-control">
+            <option value="Silver Ceramic (£625 - Most Popular)">Silver Ceramic (£625 - Most Popular)</option>
+            <option value="Gold Graphene (£950 - Hero Package)">Gold Graphene (£950 - Hero Package)</option>
+            <option value="Bronze Ceramic (£480 - Entry Protection)">Bronze Ceramic (£480 - Entry Protection)</option>
+            <option value="Ultimate Valet (From £170 - Full Reset)">Ultimate Valet (From £170 - Full Reset)</option>
+            <option value="Executive Valet (From £110 - Interior Focus)">Executive Valet (From £110 - Interior Focus)</option>
+            <option value="Premium Valet (From £85 - Exterior Boost)">Premium Valet (From £85 - Exterior Boost)</option>
+            <option value="Standard Valet (From £60 - Essential Clean)">Standard Valet (From £60 - Essential Clean)</option>
+            <option value="Free 10-Minute Paint Inspection">Free 10-Minute Paint Inspection</option>
+            <option value="General Inquiry / Custom Quote">General Inquiry / Custom Quote</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="clientMessage">Notes / Vehicle Condition</label>
+          <textarea id="clientMessage" class="form-control" placeholder="Tell us about swirl marks, scratches, or special requirements..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-quote-btn">Send Quote Request via Email</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Bottom Navigation Bar -->
+  <nav class="bottom-nav">
+    <button class="nav-tab active" id="tab-home" onclick="switchTab('home')">
+      <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      <span>Home</span>
+    </button>
+    <button class="nav-tab" id="tab-services" onclick="switchTab('services')">
+      <svg viewBox="0 0 24 24"><path d="M12 2l-5.5 9h11zM3.5 13l2.5 8h12l2.5-8z"/></svg>
+      <span>Services</span>
+    </button>
+    <button class="nav-tab" id="tab-gallery" onclick="switchTab('gallery')">
+      <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+      <span>Gallery</span>
+    </button>
+    <button class="nav-tab" id="tab-contact" onclick="switchTab('contact')">
+      <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      <span>Contact</span>
+    </button>
+  </nav>
+</div>
+
+<script>
+  function switchTab(tabName) {
+    // Hide all sections
+    document.querySelectorAll('.view-section').forEach(section => {
+      section.classList.remove('active');
+    });
+
+    // Deactivate all nav tabs
+    document.querySelectorAll('.nav-tab').forEach(tab => {
+      tab.classList.remove('active');
+    });
+
+    // Show target section
+    const targetSection = document.getElementById(`view-${tabName}`);
+    if (targetSection) {
+      targetSection.classList.add('active');
+    }
+
+    // Activate target nav tab
+    const targetTab = document.getElementById(`tab-${tabName}`);
+    if (targetTab) {
+      targetTab.classList.add('active');
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function selectServiceAndContact(serviceName) {
+    switchTab('contact');
+    const selectElem = document.getElementById('packageSelect');
+    if (selectElem) {
+      for (let i = 0; i < selectElem.options.length; i++) {
+        if (selectElem.options[i].value.includes(serviceName) || selectElem.options[i].text.includes(serviceName)) {
+          selectElem.selectedIndex = i;
+          break;
+        }
+      }
+    }
+  }
+
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const name = document.getElementById('clientName').value;
+    const phone = document.getElementById('clientPhone').value;
+    const vehicle = document.getElementById('vehicleDetails').value;
+    const pkg = document.getElementById('packageSelect').value;
+    const msg = document.getElementById('clientMessage').value;
+
+    const emailTo = "valetworx@gmail.com";
+    const subject = encodeURIComponent(`Detailing Inquiry from ${name} - ${vehicle}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\n` +
+      `Phone: ${phone}\n` +
+      `Vehicle: ${vehicle}\n` +
+      `Selected Package: ${pkg}\n\n` +
+      `Notes / Details:\n${msg || 'None'}\n\n` +
+      `-- Sent via Detailing NI Web App`
+    );
+
+    window.location.href = `mailto:${emailTo}?subject=${subject}&body=${body}`;
+  }
+</script>
+
+</body>
+</html>
