@@ -310,48 +310,31 @@
   }
 
   /* ---------- Gallery / before-after ---------- */
-  .compare{
-    position:relative;
-    max-width:760px;margin:0 auto;
-    aspect-ratio:16/10;
-    border-radius:var(--radius);
-    overflow:hidden;
-    border:1px solid var(--line);
-    cursor:ew-resize;
-    user-select:none;
-    -webkit-user-select:none;
-    touch-action:pan-y;
-  }
-  .compare-after,.compare-before{
-    position:absolute;inset:0;
-    display:flex;align-items:center;justify-content:center;
-    flex-direction:column;gap:10px;
-  }
-  .compare-before{overflow:hidden;}
-  .compare-tag{
-    position:absolute;top:14px;font-size:.7rem;font-weight:800;
-    letter-spacing:.08em;text-transform:uppercase;
-    background:rgba(0,0,0,.55);padding:6px 12px;border-radius:999px;
-  }
-  .compare-tag.tag-before{left:14px;}
-  .compare-tag.tag-after{right:14px;}
-  .compare-handle{
-    position:absolute;top:0;bottom:0;
-    width:3px;background:#fff;
-    box-shadow:0 0 0 1px rgba(0,0,0,.3);
-    left:50%;
-    transform:translateX(-50%);
-  }
-  .compare-handle::after{
-    content:"";
-    position:absolute;top:50%;left:50%;
-    width:44px;height:44px;
-    transform:translate(-50%,-50%);
-    background:#fff;border-radius:50%;
-    box-shadow:0 4px 14px rgba(0,0,0,.35);
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='8 4 2 12 8 20'/%3E%3Cpolyline points='16 4 22 12 16 20'/%3E%3C/svg%3E");
-    background-repeat:no-repeat;background-position:center;background-size:20px;
-  }
+<!-- ===================== GALLERY ===================== -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">See The Difference</span>
+      <h2>Drag To Compare.</h2>
+      <p>A real before &amp; after from the studio, side by side. Drag the slider to see the transformation.</p>
+    </div>
+    
+    <div class="compare reveal" id="compareSlider">
+      <!-- AFTER IMAGE (The corrected, glossy paint) -->
+      <div class="compare-after" style="background-image: url('After.jpg'); background-size: cover; background-position: center;">
+        <span class="compare-tag tag-after">After</span>
+      </div>
+      
+      <!-- BEFORE IMAGE (The dull, swirled paint) -->
+      <div class="compare-before" id="compareBeforeMask" style="background-image: url('Before.jpg'); background-size: cover; background-position: center;">
+        <span class="compare-tag tag-before">Before</span>
+      </div>
+      
+      <div class="compare-handle" id="compareHandle"></div>
+    </div>
+  </div>
+</section>
+
 
   /* ---------- Packages ---------- */
   .tier-grid{
